@@ -1,0 +1,31 @@
+.hidden {
+  display: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.col-5 {
+  width: calc(100 / 5);
+}
+
+@media screen and (max-width: 390px) {
+  div.agents-title {
+    margin: auto;
+  }
+
+  li {
+    width: 100px;
+    height: 100px;
+  }
+}
