@@ -1,0 +1,136 @@
+header {
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+  color: white;
+  height: 5em;
+  width: 100%;
+}
+
+.val-logo {
+  margin: 0.5em;
+  text-align: center;
+}
+
+.tomorrow-font {
+  font-family: Tomorrow, sans-serif;
+}
+
+.button-container {
+  width: 5em;
+  height: auto;
+  text-align: center;
+  margin: 1.5em 1em;
+  color: #fe4656;
+  font-size: 1em;
+}
+
+.color-bg {
+  min-height: 1024px;
+  background-image: url("background-images/ajax-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: black;
+}
+
+.bw-bg {
+  min-height: 1024px;
+  background-image: url("background-images/ajax-background-bw.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: black;
+  filter: brightness(150%);
+  filter: contrast(105%);
+}
+
+.val-font {
+  font-family: VALORANT, sans-serif;
+  color: white;
+}
+
+.main-title {
+  font-size: 68px;
+}
+
+.main-container {
+  position: fixed;
+  text-align: center;
+  margin-top: 10em;
+}
+
+.start-button {
+  background-color: #fe4656;
+  width: 10em;
+  height: 3em;
+  font-size: 24px;
+  border: white 1px solid;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.shadow {
+  max-width: 50em;
+  max-height: 100%;
+  margin: auto;
+  background-color: black;
+  opacity: 35%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+}
+
+.agents-section {
+  max-width: 50em;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.agents-title {
+  position: relative;
+  background-color: #fe4656;
+  width: 25em;
+  margin: 0 auto;
+}
+
+.agents-text {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 1.5em;
+  padding: 0;
+  font-size: 3.5em;
+}
+
+.agent-icon-container {
+  width: 100%;
+}
+
+.agent-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.flex-direction {
+  display: inline-flex;
+}
