@@ -3,13 +3,11 @@
 }
 
 body {
-  margin: 0;
-  height: 100%;
   overflow: hidden;
 }
 
 .row {
-  max-width: 100%;
+  width: 100%;
   display: flex;
 }
 
@@ -22,11 +20,12 @@ body {
 }
 
 @media screen and (max-width: 390px) {
-  .agents-title {
-    width: 20em;
+  div.agents-title {
+    margin: auto;
   }
 
-  .col-5 {
-    width: calc(100 / 3);
+  li {
+    width: 100px;
+    height: 100px;
   }
 }
