@@ -17,8 +17,17 @@ button {
   text-align: center;
 }
 
+.val-font {
+  font-family: VALORANT, sans-serif;
+  color: white;
+}
+
 .tomorrow-font {
   font-family: Tomorrow, sans-serif;
+}
+
+.noto-font {
+  font-family: "Noto Sans", sans-serif;
 }
 
 .button-container {
@@ -52,11 +61,6 @@ button {
   background-color: black;
   filter: brightness(150%);
   filter: contrast(105%);
-}
-
-.val-font {
-  font-family: VALORANT, sans-serif;
-  color: white;
 }
 
 .main-title {
@@ -149,4 +153,116 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
+}
+
+.title-container {
+  position: relative;
+  background-color: #fe4656;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 5em;
+}
+
+.details {
+  max-width: 50em;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.agent-name {
+  color: #fe4656;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 1.3em;
+  margin-bottom: 0;
+  font-size: 64px;
+  font-weight: bolder;
+}
+
+.role-name {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin-top: -0.5em;
+}
+
+img.agent-portrait {
+  height: 600px;
+  margin-top: -2em;
+  margin-left: -5em;
+}
+
+.portrait-container {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.details-container {
+  width: 100%;
+}
+
+.details-background {
+  height: 575px;
+  background-color: #333;
+  border: 1px solid white;
+  border-radius: 2%;
+}
+
+.detail-header {
+  text-align: center;
+  color: white;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.detail-text {
+  color: white;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1em;
+  font-size: 12px;
+  font-weight: 300;
+  padding-right: 0.5em;
+}
+
+.ability {
+  width: 75px;
+  margin-left: 0.5em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.ability-name {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+}
+
+p.ability-description {
+  margin: 0;
+}
+
+.agents-button {
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.a-agent {
+  color: #fe4656;
+  text-transform: uppercase;
+  font-size: 32px;
 }
