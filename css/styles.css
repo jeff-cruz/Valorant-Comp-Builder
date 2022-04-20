@@ -196,7 +196,7 @@ button {
 
 img.agent-portrait {
   height: 600px;
-  margin-top: -2em;
+  margin-top: 0;
   margin-left: -5em;
 }
 
