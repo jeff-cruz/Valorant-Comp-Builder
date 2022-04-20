@@ -9,14 +9,7 @@ var $agentsBigButton = document.querySelector('.a-agent');
 var $nameContainer = document.querySelector('.name-container');
 var $portraitContainer = document.querySelector('.portrait-container');
 var $detailContainer = document.querySelector('.description-container');
-var $abilityOneIconContainer = document.querySelector('.ability-icons-one');
-var $abilityOneContainer = document.querySelector('.ability-one-container');
-var $abilityTwoIconContainer = document.querySelector('.ability-icons-two');
-var $abilityTwoContainer = document.querySelector('.ability-two-container');
-var $abilityThreeIconContainer = document.querySelector('.ability-icons-three');
-var $abilityThreeContainer = document.querySelector('.ability-three-container');
-var $abilityFourIconContainer = document.querySelector('.ability-icons-four');
-var $abilityFourContainer = document.querySelector('.ability-four-container');
+var $abilityContainer = document.querySelector('.abilities-container');
 
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://valorant-api.com/v1/agents');
@@ -85,118 +78,60 @@ function agentDetails(event) {
           $detailText.textContent = xhr.response.data[id].description;
           $detailContainer.appendChild($detailText);
 
-          var $abilityOneIcon = document.createElement('img');
-          $abilityOneIcon.setAttribute('class', 'ability-one-icon ability');
-          $abilityOneIconContainer.appendChild($abilityOneIcon);
-
-          var $abilityOneName = document.createElement('p');
-          $abilityOneName.setAttribute('class', 'ability-name ability-one-name noto-font');
-          $abilityOneContainer.appendChild($abilityOneName);
-
-          var $abilityOneText = document.createElement('p');
-          $abilityOneText.setAttribute('class', 'ability-description ability-description-one');
-          $abilityOneContainer.appendChild($abilityOneText);
-
-          var $abilityTwoIcon = document.createElement('img');
-          $abilityTwoIcon.setAttribute('class', 'ability-two-icon ability');
-          $abilityTwoIconContainer.appendChild($abilityTwoIcon);
-
-          var $abilityTwoName = document.createElement('p');
-          $abilityTwoName.setAttribute('class', 'ability-name ability-two-name noto-font');
-          $abilityTwoContainer.appendChild($abilityTwoName);
-
-          var $abilityTwoText = document.createElement('p');
-          $abilityTwoText.setAttribute('class', 'ability-description ability-description-two');
-          $abilityTwoContainer.appendChild($abilityTwoText);
-
-          var $abilityThreeIcon = document.createElement('img');
-          $abilityThreeIcon.setAttribute('class', 'ability-three-icon ability');
-          $abilityThreeIconContainer.appendChild($abilityThreeIcon);
-
-          var $abilityThreeName = document.createElement('p');
-          $abilityThreeName.setAttribute('class', 'ability-name ability-three-name noto-font');
-          $abilityThreeContainer.appendChild($abilityThreeName);
-
-          var $abilityThreeText = document.createElement('p');
-          $abilityThreeText.setAttribute('class', 'ability-description ability-description-three');
-          $abilityThreeContainer.appendChild($abilityThreeText);
-
-          var $abilityFourIcon = document.createElement('img');
-          $abilityFourIcon.setAttribute('class', 'ability-four-icon ability');
-          $abilityFourIconContainer.appendChild($abilityFourIcon);
-
-          var $abilityFourName = document.createElement('p');
-          $abilityFourName.setAttribute('class', 'ability-name ability-four-name noto-font');
-          $abilityFourContainer.appendChild($abilityFourName);
-
-          var $abilityFourText = document.createElement('p');
-          $abilityFourText.setAttribute('class', 'ability-description ability-description-four');
-          $abilityFourContainer.appendChild($abilityFourText);
-
           for (var j = 0; j < xhr.response.data[id].abilities.length; j++) {
-            if (j === 0) {
-              $abilityOneIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityOneName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityOneText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 1) {
-              $abilityTwoIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityTwoName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityTwoText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 2) {
-              $abilityThreeIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityThreeName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityThreeText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 3) {
-              $abilityFourIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityFourName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityFourText.textContent = xhr.response.data[id].abilities[j].description;
-            }
-          }
+            var $row = document.createElement('div');
+            $row.setAttribute('class', 'row');
 
-          data.display = true;
+            var $abilityIconContainer = document.createElement('div');
+            $abilityIconContainer.setAttribute('class', 'col-20 ability-icons');
+
+            var $abilityIcon = document.createElement('img');
+            $abilityIcon.setAttribute('class', 'ability-icon ability');
+            $abilityIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
+            $abilityIconContainer.appendChild($abilityIcon);
+            $row.appendChild($abilityIconContainer);
+
+            var $abilityTextContainer = document.createElement('div');
+            $abilityTextContainer.setAttribute('class', 'col-80 detail-text noto-font ability-container');
+            $row.appendChild($abilityTextContainer);
+
+            var $abilityName = document.createElement('p');
+            $abilityName.setAttribute('class', 'ability-name noto-font');
+            $abilityName.textContent = xhr.response.data[id].abilities[j].displayName;
+            $abilityTextContainer.appendChild($abilityName);
+
+            var $abilityText = document.createElement('p');
+            $abilityText.setAttribute('class', 'ability-description');
+            $abilityText.textContent = xhr.response.data[id].abilities[j].description;
+            $abilityTextContainer.appendChild($abilityText);
+
+            $abilityContainer.appendChild($row);
+
+          }
         }
+        data.display = true;
       } else if (data.display === true) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
-
           $h1 = document.querySelector('.agent-name');
           $h2 = document.querySelector('.role-name');
           $agentPortrait = document.querySelector('.agent-portrait');
           $detailText = document.querySelector('.detail-text');
-          $abilityOneIcon = document.querySelector('.ability-one-icon');
-          $abilityOneName = document.querySelector('.ability-one-name');
-          $abilityOneText = document.querySelector('.ability-description-one');
-          $abilityTwoIcon = document.querySelector('.ability-two-icon');
-          $abilityTwoName = document.querySelector('.ability-two-name');
-          $abilityTwoText = document.querySelector('.ability-description-two');
-          $abilityThreeIcon = document.querySelector('.ability-three-icon');
-          $abilityThreeName = document.querySelector('.ability-three-name');
-          $abilityThreeText = document.querySelector('.ability-description-three');
-          $abilityFourIcon = document.querySelector('.ability-four-icon');
-          $abilityFourName = document.querySelector('.ability-four-name');
-          $abilityFourText = document.querySelector('.ability-description-four');
+          $abilityIcon = document.querySelectorAll('.ability-icon');
+          $abilityName = document.querySelectorAll('.ability-name');
+          $abilityText = document.querySelectorAll('.ability-description');
 
           $h1.textContent = xhr.response.data[id].displayName;
           $h2.textContent = xhr.response.data[id].role.displayName;
           $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortraitV2);
           $detailText.textContent = xhr.response.data[id].description;
 
-          for (j = 0; j < xhr.response.data[id].abilities.length; j++) {
-            if (j === 0) {
-              $abilityOneIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityOneName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityOneText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 1) {
-              $abilityTwoIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityTwoName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityTwoText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 2) {
-              $abilityThreeIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityThreeName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityThreeText.textContent = xhr.response.data[id].abilities[j].description;
-            } else if (j === 3) {
-              $abilityFourIcon.setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
-              $abilityFourName.textContent = xhr.response.data[id].abilities[j].displayName;
-              $abilityFourText.textContent = xhr.response.data[id].abilities[j].description;
+          for (var i in xhr.response.data[id].abilities) {
+            i = 0;
+            for (j = 0; j < xhr.response.data[id].abilities.length; j++) {
+              $abilityIcon[i].setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
+              $abilityName[i].textContent = xhr.response.data[id].abilities[j].displayName;
+              $abilityText[i].textContent = xhr.response.data[id].abilities[j].description;
+              i++;
             }
           }
         }
