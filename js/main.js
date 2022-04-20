@@ -144,4 +144,5 @@ function agentDetails(event) {
     });
     xhr.send();
   }
+
 }
