@@ -196,7 +196,7 @@ button {
 
 img.agent-portrait {
   height: 600px;
-  margin-top: 0;
+  margin-top: -1em;
   margin-left: -5em;
 }
 
@@ -267,6 +267,11 @@ p.ability-description {
   font-size: 32px;
 }
 
+.mobile-display {
+  width: 100%;
+  display: flex;
+}
+
 @media screen and (max-width: 390px) {
   div.agents-title {
     margin: auto;
@@ -308,8 +313,9 @@ p.ability-description {
   }
 
   .details-container {
-    width: 80%;
-    margin: auto;
+    width: 175%;
+    position: relative;
+    margin-left: 1.5em;
   }
 
   .details-background {
@@ -318,5 +324,9 @@ p.ability-description {
 
   .portrait-container {
     height: 250px;
+  }
+
+  .mobile-display {
+    display: inline-block;
   }
 }
