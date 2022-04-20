@@ -266,3 +266,57 @@ p.ability-description {
   text-transform: uppercase;
   font-size: 32px;
 }
+
+@media screen and (max-width: 390px) {
+  div.agents-title {
+    margin: auto;
+  }
+
+  li.agent-list-item {
+    width: 100px;
+    height: 100px;
+  }
+
+  h1.agent-name {
+    margin-top: 2em;
+    font-size: 40px;
+  }
+
+  h2.role-name {
+    font-size: 20px;
+  }
+
+  .agent-portrait {
+    max-height: 250px;
+    padding-left: 10em;
+  }
+
+  .ability {
+    width: 50px;
+  }
+
+  .detail-text {
+    font-size: 10px;
+  }
+
+  .ability-description {
+    font-size: 10px;
+  }
+
+  .a-agent {
+    font-size: 18px;
+  }
+
+  .details-container {
+    width: 80%;
+    margin: auto;
+  }
+
+  .details-background {
+    height: 525px;
+  }
+
+  .portrait-container {
+    height: 250px;
+  }
+}

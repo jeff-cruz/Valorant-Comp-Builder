@@ -26,6 +26,7 @@ xhr.addEventListener('load', function () {
   for (var i = 0; i < xhr.response.data.length; i++) {
     if (xhr.response.data[i].isPlayableCharacter === true) {
       var $li = document.createElement('li');
+      $li.setAttribute('class', 'agent-list-item');
       var $icon = document.createElement('img');
       $icon.setAttribute('class', 'agent-icon');
       $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
@@ -58,6 +59,8 @@ function agentDetails(event) {
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
+      // console.log(xhr.status);
+      // console.log(xhr.response);
       // AGENT DETAILS SCREEN
       var i = event.target.id;
       if (data.display === false) {
