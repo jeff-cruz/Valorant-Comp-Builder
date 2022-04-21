@@ -135,7 +135,7 @@ function createComp(event) {
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
-      // AGENT LIST SCREEN
+      // AGENT COMP LIST SCREEN
       for (var i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
           var $li = document.createElement('li');
@@ -158,14 +158,19 @@ $agentCompList.addEventListener('click', agentSelect);
 function agentSelect(event) {
   if (event.target.tagName === 'IMG') {
     if ($selectContainers[0].childElementCount === 0) {
+      event.target.parentNode.remove();
       $selectContainers[0].appendChild(event.target);
     } else if ($selectContainers[1].childElementCount === 0) {
+      event.target.parentNode.remove();
       $selectContainers[1].appendChild(event.target);
     } else if ($selectContainers[2].childElementCount === 0) {
+      event.target.parentNode.remove();
       $selectContainers[2].appendChild(event.target);
     } else if ($selectContainers[3].childElementCount === 0) {
+      event.target.parentNode.remove();
       $selectContainers[3].appendChild(event.target);
     } else if ($selectContainers[4].childElementCount === 0) {
+      event.target.parentNode.remove();
       $selectContainers[4].appendChild(event.target);
     }
   }
@@ -177,8 +182,11 @@ function removeAgent(event) {
     for (var i = 0; i < $selectContainers.length; i++) {
       if (parseInt(event.target.parentNode.id) === i) {
         if ($selectContainers[i].childElementCount === 1) {
+          var $li = document.createElement('li');
+          $li.setAttribute('class', 'agent-list-item');
+          $li.appendChild(event.target);
+          $agentCompList.appendChild($li);
           $selectContainers[i].removeChild(event.target);
-          $agentCompList.appendChild(event.target);
         }
       }
     }
