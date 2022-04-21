@@ -309,6 +309,11 @@ p.ability-description {
   margin-bottom: 1em;
 }
 
+div.select-container > img {
+  margin-bottom: -4.5em;
+  margin-left: 0.5em;
+}
+
 .submit-container {
   text-align: center;
 }

@@ -16,6 +16,8 @@ var $agentPortrait = document.querySelector('.agent-portrait');
 var $detailText = document.querySelector('.detail-text');
 var $createComp = document.querySelector('.create-button');
 var $compScreen = document.querySelector('.comp-screen');
+var $selectContainers = document.querySelectorAll('.select-container');
+var $compSelect = document.querySelector('.comp-select');
 
 $start.addEventListener('click', handleStart);
 function handleStart(event) {
@@ -149,5 +151,42 @@ function createComp(event) {
     });
     xhr.send();
     data.compListDisplay = true;
+  }
+}
+
+$agentCompList.addEventListener('click', agentSelect);
+function agentSelect(event) {
+  if (event.target.tagName === 'IMG') {
+    if ($selectContainers[0].childElementCount === 0) {
+      $selectContainers[0].appendChild(event.target);
+    } else if ($selectContainers[1].childElementCount === 0) {
+      $selectContainers[1].appendChild(event.target);
+    } else if ($selectContainers[2].childElementCount === 0) {
+      $selectContainers[2].appendChild(event.target);
+    } else if ($selectContainers[3].childElementCount === 0) {
+      $selectContainers[3].appendChild(event.target);
+    } else if ($selectContainers[4].childElementCount === 0) {
+      $selectContainers[4].appendChild(event.target);
+    }
+  }
+}
+
+$compSelect.addEventListener('click', removeAgent);
+function removeAgent(event) {
+  if (event.target.tagName === 'IMG') {
+    if (event.target.parentNode.id === 0) {
+      if ($selectContainers[0].childElementCount === 1) {
+        $selectContainers[0].removeChild(event.target);
+        $agentCompList.appendChild(event.target);
+        console.log('0 clicked');
+      }
+    }
+  }
+  if (event.target.parentNode.id === 1) {
+    if ($selectContainers[1].childElementCount === 1) {
+      console.log('1 clicked');
+      $selectContainers[1].removeChild(event.target);
+      $agentCompList.appendChild(event.target);
+    }
   }
 }
