@@ -174,19 +174,13 @@ function agentSelect(event) {
 $compSelect.addEventListener('click', removeAgent);
 function removeAgent(event) {
   if (event.target.tagName === 'IMG') {
-    if (event.target.parentNode.id === 0) {
-      if ($selectContainers[0].childElementCount === 1) {
-        $selectContainers[0].removeChild(event.target);
-        $agentCompList.appendChild(event.target);
-        console.log('0 clicked');
+    for (var i = 0; i < $selectContainers.length; i++) {
+      if (parseInt(event.target.parentNode.id) === i) {
+        if ($selectContainers[i].childElementCount === 1) {
+          $selectContainers[i].removeChild(event.target);
+          $agentCompList.appendChild(event.target);
+        }
       }
-    }
-  }
-  if (event.target.parentNode.id === 1) {
-    if ($selectContainers[1].childElementCount === 1) {
-      console.log('1 clicked');
-      $selectContainers[1].removeChild(event.target);
-      $agentCompList.appendChild(event.target);
     }
   }
 }
