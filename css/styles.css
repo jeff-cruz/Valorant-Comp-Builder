@@ -272,6 +272,21 @@ p.ability-description {
   display: flex;
 }
 
+.create-container {
+  text-align: center;
+}
+
+.create-button {
+  color: white;
+  background-color: #fe4656;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em;
+  font-size: 20px;
+  width: 15em;
+  height: auto;
+}
+
 @media screen and (max-width: 390px) {
   div.agents-title {
     margin: auto;
@@ -328,5 +343,9 @@ p.ability-description {
 
   .mobile-display {
     display: inline-block;
+  }
+
+  .create-container {
+    margin-top: 2em;
   }
 }

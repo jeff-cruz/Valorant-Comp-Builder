@@ -1,6 +1,6 @@
 /* exported data */
 var data = {
-  agents: [],
+  agentComps: [],
   display: false,
   nextEntryId: 1
 };
