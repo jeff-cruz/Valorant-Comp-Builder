@@ -1,6 +1,8 @@
 /* exported data */
 var data = {
   agentComps: [],
-  display: false,
+  listDisplay: false,
+  compListDisplay: false,
+  detailsDisplay: false,
   nextEntryId: 1
 };

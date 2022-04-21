@@ -4,6 +4,7 @@ var $agentScreen = document.querySelector('.agents-screen');
 var $mainScreen = document.querySelector('.main-screen');
 var $detailsScreen = document.querySelector('.agent-details');
 var $agentList = document.querySelector('.agent-list');
+var $agentCompList = document.querySelector('.agent-comp-list');
 var $agentsButton = document.querySelector('.agents-link');
 var $agentsBigButton = document.querySelector('.a-agent');
 var $abilityIcons = document.querySelectorAll('.ability-pics');
@@ -13,36 +14,68 @@ var $agentName = document.querySelector('.agent-name');
 var $roleName = document.querySelector('.role-name');
 var $agentPortrait = document.querySelector('.agent-portrait');
 var $detailText = document.querySelector('.detail-text');
-
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://valorant-api.com/v1/agents');
-xhr.responseType = 'json';
-xhr.addEventListener('load', function () {
-  // AGENT LIST SCREEN
-  for (var i = 0; i < xhr.response.data.length; i++) {
-    if (xhr.response.data[i].isPlayableCharacter === true) {
-      var $li = document.createElement('li');
-      $li.setAttribute('class', 'agent-list-item');
-      var $icon = document.createElement('img');
-      $icon.setAttribute('class', 'agent-icon');
-      $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
-      $icon.setAttribute('id', i);
-      $li.appendChild($icon);
-      $agentList.appendChild($li);
-    }
-  }
-});
-xhr.send();
+var $createComp = document.querySelector('.create-button');
+var $compScreen = document.querySelector('.comp-screen');
 
 $start.addEventListener('click', handleStart);
-$agentsButton.addEventListener('click', handleStart);
-$agentsBigButton.addEventListener('click', handleStart);
-
 function handleStart(event) {
   $header.className = 'header';
   $agentScreen.className = 'agents-screen';
   $mainScreen.className = 'main-screen hidden';
   $detailsScreen.className = 'agent-details hidden';
+  data.listDisplay = true;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://valorant-api.com/v1/agents');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    // AGENT LIST SCREEN
+    for (var i = 0; i < xhr.response.data.length; i++) {
+      if (xhr.response.data[i].isPlayableCharacter === true) {
+        var $li = document.createElement('li');
+        $li.setAttribute('class', 'agent-list-item');
+        var $icon = document.createElement('img');
+        $icon.setAttribute('class', 'agent-icon');
+        $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
+        $icon.setAttribute('id', i);
+        $li.appendChild($icon);
+        $agentList.appendChild($li);
+      }
+    }
+  });
+  xhr.send();
+}
+
+$agentsButton.addEventListener('click', agentsButton);
+$agentsBigButton.addEventListener('click', agentsButton);
+
+function agentsButton(event) {
+  $agentScreen.className = 'agents-screen';
+  $detailsScreen.className = 'agent-details hidden';
+  $compScreen.className = 'comp-screen hidden';
+
+  if (data.listDisplay === false) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://valorant-api.com/v1/agents');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', function () {
+      // AGENT LIST SCREEN
+      for (var i = 0; i < xhr.response.data.length; i++) {
+        if (xhr.response.data[i].isPlayableCharacter === true) {
+          var $li = document.createElement('li');
+          $li.setAttribute('class', 'agent-list-item');
+          var $icon = document.createElement('img');
+          $icon.setAttribute('class', 'agent-icon');
+          $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
+          $icon.setAttribute('id', i);
+          $li.appendChild($icon);
+          $agentList.appendChild($li);
+        }
+      }
+    });
+    xhr.send();
+    data.listDisplay = true;
+  }
 }
 
 $agentList.addEventListener('click', agentDetails);
@@ -58,7 +91,7 @@ function agentDetails(event) {
 
       // AGENT DETAILS SCREEN
       var id = event.target.id;
-      if (data.display === false) {
+      if (data.detailsDisplay === false) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
           $agentName.textContent = xhr.response.data[id].displayName;
           $roleName.textContent = xhr.response.data[id].role.displayName;
@@ -71,8 +104,8 @@ function agentDetails(event) {
             $abilityTexts[j].textContent = xhr.response.data[id].abilities[j].description;
           }
         }
-        data.display = true;
-      } else if (data.display === true) {
+        data.detailsDisplay = true;
+      } else if (data.detailsDisplay === true) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
           $agentName.textContent = xhr.response.data[id].displayName;
           $roleName.textContent = xhr.response.data[id].role.displayName;
@@ -87,5 +120,34 @@ function agentDetails(event) {
       }
     });
     xhr.send();
+  }
+}
+
+$createComp.addEventListener('click', createComp);
+function createComp(event) {
+  $agentScreen.className = 'agents-screen hidden';
+  $compScreen.className = 'comp-screen';
+
+  if (data.compListDisplay === false) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://valorant-api.com/v1/agents');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', function () {
+      // AGENT LIST SCREEN
+      for (var i = 0; i < xhr.response.data.length; i++) {
+        if (xhr.response.data[i].isPlayableCharacter === true) {
+          var $li = document.createElement('li');
+          $li.setAttribute('class', 'agent-list-item');
+          var $icon = document.createElement('img');
+          $icon.setAttribute('class', 'agent-icon');
+          $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
+          $icon.setAttribute('id', i);
+          $li.appendChild($icon);
+          $agentCompList.appendChild($li);
+        }
+      }
+    });
+    xhr.send();
+    data.compListDisplay = true;
   }
 }
