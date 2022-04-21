@@ -15,17 +15,25 @@ body {
   width: 100%;
 }
 
-.col-5 {
-  width: calc(100 / 5);
+.col-half {
+  width: 50%;
+}
+
+.col-20 {
+  width: 20%;
+}
+
+.col-80 {
+  width: 80%;
 }
 
 @media screen and (max-width: 390px) {
-  div.agents-title {
-    margin: auto;
+  body {
+    overflow: scroll;
   }
 
-  li {
-    width: 100px;
-    height: 100px;
+  .col-half {
+    max-width: 100%;
+    margin: 0;
   }
 }

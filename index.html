@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link href="http://fonts.cdnfonts.com/css/valorant?styles=64778" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header hidden">
@@ -30,6 +31,7 @@
   </header>
 
   <main>
+    <!-- MAIN SCREEN -->
     <div class="main-screen">
       <div class="color-bg">
         <div class="row">
@@ -41,6 +43,7 @@
       </div>
     </div>
 
+    <!-- AGENT LIST SCREEN -->
     <div class="agents-screen hidden">
       <div class="background">
         <div class="bw-bg">
@@ -49,7 +52,6 @@
           <div class="shadow"></div>
         </div>
       </div>
-
       <div class="agents-section">
         <div class="row">
           <div class="col-full">
@@ -58,6 +60,116 @@
             </div>
             <ul class="row agent-icon-container agent-list">
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGENT DETAILS SCREEN -->
+    <div class="agent-details hidden">
+      <div class="background">
+        <div class="bw-bg">
+          <div class="overlay">
+          </div>
+          <div class="shadow"></div>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="row">
+          <div class="col-full">
+            <div class="name-container">
+              <h1 class="agent-name tomorrow-font"></h1>
+              <h2 class="role-name tomorrow-font"></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-full">
+            <div class="mobile-display">
+
+              <!--left side of agent info-->
+              <div class="col-half">
+                <div class="portrait-container">
+                  <img class="agent-portrait" src="">
+                </div>
+              </div>
+
+              <!--right side of agent info-->
+              <div class="col-half">
+                <div class="details-container">
+                  <div class="details-background">
+                    <div class="row">
+                      <div class="col-full description-container">
+                        <h3 class="detail-header noto-font">Biography</h3>
+                        <p class="detail-text noto-font"></p>
+                      </div>
+                    </div>
+
+                    <!--abilities container-->
+                    <div class="abilities-container">
+                      <div class="row">
+                        <div class="col-full">
+                          <h3 class="detail-header noto-font">Abilities</h3>
+                        </div>
+                      </div>
+
+                      <!--first ability-->
+                      <div class="row">
+                        <div class="col-20">
+                          <img class="ability-pics ability" src="">
+                        </div>
+                        <div class="col-80 detail-text noto-font ability-container">
+                          <p class="ability-name noto-font"></p>
+                          <p class="ability-description"></p>
+                        </div>
+                      </div>
+
+                      <!--second ability-->
+                      <div class="row">
+                        <div class="col-20 ability-icons">
+                          <img class="ability-pics ability" src="">
+                        </div>
+                        <div class="col-80 detail-text noto-font ability-container">
+                          <p class="ability-name noto-font"></p>
+                          <p class="ability-description"></p>
+                        </div>
+                      </div>
+
+                      <!--third ability-->
+                      <div class="row">
+                        <div class="col-20 ability-icons">
+                          <img class="ability-pics ability" src="">
+                        </div>
+                        <div class="col-80 detail-text noto-font ability-container">
+                          <p class="ability-name noto-font"></p>
+                          <p class="ability-description"></p>
+                        </div>
+                      </div>
+
+                      <!--fourth ability-->
+                      <div class="row">
+                        <div class="col-20 ability-icons">
+                          <img class="ability-pics ability" src="">
+                        </div>
+                        <div class="col-80 detail-text noto-font ability-container">
+                          <p class="ability-name noto-font"></p>
+                          <p class="ability-description"></p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-full">
+            <div class="agents-button">
+              <a class="agents-link a-agent tomorrow-font">&#60;Agents</a>
+            </div>
           </div>
         </div>
       </div>
