@@ -340,6 +340,16 @@ div.select-container > img {
   margin-bottom: 5em;
 }
 
+.create-comp {
+  color: white;
+  background-color: #fe4656;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 3em;
+  font-size: 20px;
+  height: auto;
+}
+
 @media screen and (max-width: 390px) {
   div.agents-title {
     margin: auto;
