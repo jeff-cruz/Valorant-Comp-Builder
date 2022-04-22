@@ -18,6 +18,10 @@ var $createComp = document.querySelector('.create-button');
 var $compScreen = document.querySelector('.comp-screen');
 var $selectContainers = document.querySelectorAll('.select-container');
 var $compSelect = document.querySelector('.comp-select');
+var $submitButton = document.querySelector('.submit-button');
+var $entriesScreen = document.querySelector('.entries-screen');
+var $entriesList = document.querySelector('.entries-container');
+var agentComp = [];
 
 $start.addEventListener('click', handleStart);
 function handleStart(event) {
@@ -55,6 +59,7 @@ function agentsButton(event) {
   $agentScreen.className = 'agents-screen';
   $detailsScreen.className = 'agent-details hidden';
   $compScreen.className = 'comp-screen hidden';
+  $entriesScreen.className = 'entries-screen hidden';
 
   if (data.listDisplay === false) {
     var xhr = new XMLHttpRequest();
@@ -160,20 +165,26 @@ function agentSelect(event) {
     if ($selectContainers[0].childElementCount === 0) {
       event.target.parentNode.remove();
       $selectContainers[0].appendChild(event.target);
+      agentComp.push(event.target);
     } else if ($selectContainers[1].childElementCount === 0) {
       event.target.parentNode.remove();
       $selectContainers[1].appendChild(event.target);
+      agentComp.push(event.target);
     } else if ($selectContainers[2].childElementCount === 0) {
       event.target.parentNode.remove();
       $selectContainers[2].appendChild(event.target);
+      agentComp.push(event.target);
     } else if ($selectContainers[3].childElementCount === 0) {
       event.target.parentNode.remove();
       $selectContainers[3].appendChild(event.target);
+      agentComp.push(event.target);
     } else if ($selectContainers[4].childElementCount === 0) {
       event.target.parentNode.remove();
       $selectContainers[4].appendChild(event.target);
+      agentComp.push(event.target);
     }
   }
+  console.log(agentComp);
 }
 
 $compSelect.addEventListener('click', removeAgent);
@@ -186,9 +197,48 @@ function removeAgent(event) {
           $li.setAttribute('class', 'agent-list-item');
           $li.appendChild(event.target);
           $agentCompList.appendChild($li);
-          $selectContainers[i].removeChild(event.target);
+          // $selectContainers[i].removeChild(event.target);
+          for (var j = 0; j < agentComp.length; j++) {
+            if (agentComp.indexOf(event.target) === j) {
+              agentComp.splice(j, 1);
+            }
+          }
         }
       }
     }
   }
+  console.log(agentComp);
+}
+
+$submitButton.addEventListener('click', submitButton);
+function submitButton(event) {
+  if (agentComp.length === 5) {
+    data.agentCompList.unshift(agentComp);
+    data.nextEntryId++;
+    agentComp.splice(0, 5);
+  }
+  console.log(data.agentCompList);
+}
+
+function renderComp(agentComp) {
+  var $entry = document.createElement('div');
+  var $divOne = document.createElement('div');
+  var $divTwo = document.createElement('div');
+  var $divThree = document.createElement('div');
+  var $divFour = document.createElement('div');
+  var $divFive = document.createElement('div');
+
+  $entry.setAttribute('class', 'entry');
+  $divOne.setAttribute('class', 'agent-one');
+  $divTwo.setAttribute('class', 'agent-two');
+  $divThree.setAttribute('class', 'agent-three');
+  $divFour.setAttribute('class', 'agent-four');
+  $divFive.setAttribute('class', 'agent-five');
+
+  $entry.appendChild($divOne);
+  $entry.appendChild($divTwo);
+  $entry.appendChild($divThree);
+  $entry.appendChild($divFour);
+  $entry.appendChild($divFive);
+  $entriesList.append($entry);
 }

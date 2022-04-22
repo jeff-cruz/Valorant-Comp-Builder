@@ -330,6 +330,16 @@ div.select-container > img {
   width: 20em;
 }
 
+.entries-title {
+  position: relative;
+  background-color: #fe4656;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 5em;
+}
+
 @media screen and (max-width: 390px) {
   div.agents-title {
     margin: auto;

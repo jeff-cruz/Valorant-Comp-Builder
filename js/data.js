@@ -1,20 +1,23 @@
 /* exported data */
 var data = {
-  agentComps: [],
+  agentCompList: [],
   listDisplay: false,
   compListDisplay: false,
   detailsDisplay: false,
   nextEntryId: 1
 };
 
-// var previousEntriesJSON = localStorage.getItem('ajax-local-storage');
-// if (previousEntriesJSON !== null) {
-//   data = JSON.parse(previousEntriesJSON);
-// }
+var previousEntriesJSON = localStorage.getItem('ajax-local-storage');
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
+}
 
-// window.addEventListener('beforeunload', beforeUnload);
-// function beforeUnload() {
-//   var entriesJSON = JSON.stringify(data);
-//   localStorage.setItem('ajax-local-storage', entriesJSON);
-//   return entriesJSON;
-// }
+window.addEventListener('beforeunload', beforeUnload);
+function beforeUnload() {
+  data.listDisplay = false;
+  data.compListDisplay = false;
+  data.detailsDisplay = false;
+  var entriesJSON = JSON.stringify(data);
+  localStorage.setItem('ajax-local-storage', entriesJSON);
+  return entriesJSON;
+}
