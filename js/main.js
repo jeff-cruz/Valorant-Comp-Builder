@@ -24,6 +24,7 @@ var $entriesList = document.querySelector('.entries-container');
 var $createCompTwo = document.querySelector('.create-comp');
 var agentComp = [];
 
+// get started button
 $start.addEventListener('click', handleStart);
 function handleStart(event) {
   $header.className = 'header';
@@ -53,9 +54,9 @@ function handleStart(event) {
   xhr.send();
 }
 
+// view agent list button
 $agentsButton.addEventListener('click', agentsButton);
 $agentsBigButton.addEventListener('click', agentsButton);
-
 function agentsButton(event) {
   $agentScreen.className = 'agents-screen';
   $detailsScreen.className = 'agent-details hidden';
@@ -86,6 +87,7 @@ function agentsButton(event) {
   }
 }
 
+// view biography and abilities of an agent
 $agentList.addEventListener('click', agentDetails);
 function agentDetails(event) {
   if (event.target.tagName === 'IMG') {
@@ -192,7 +194,7 @@ function agentSelect(event) {
       agentComp.push(event.target);
     }
   }
-  console.log(agentComp);
+  // console.log(agentComp);
 }
 
 $compSelect.addEventListener('click', removeAgent);
@@ -200,14 +202,16 @@ function removeAgent(event) {
   if (event.target.tagName === 'IMG') {
     for (var i = 0; i < $selectContainers.length; i++) {
       if (parseInt(event.target.parentNode.id) === i) {
-        if ($selectContainers[i].childElementCount === 1) {
-          var $li = document.createElement('li');
-          $li.setAttribute('class', 'agent-list-item');
-          $li.appendChild(event.target);
-          $agentCompList.appendChild($li);
-          // $selectContainers[i].removeChild(event.target);
+        console.log(parseInt(event.target.parentNode.id));
+        if ($selectContainers[i].childElementCount !== 0) {
+          // console.log('reached');
+          // var $li = document.createElement('li');
+          // $li.setAttribute('class', 'agent-list-item');
+          // $li.appendChild(event.target);
+          // $agentCompList.appendChild($li);
+          $selectContainers[i].removeChild(event.target);
           for (var j = 0; j < agentComp.length; j++) {
-            if (agentComp.indexOf(event.target) === j) {
+            if (event.target.id === agentComp[j].id) {
               agentComp.splice(j, 1);
             }
           }
@@ -221,40 +225,20 @@ function removeAgent(event) {
 $submitButton.addEventListener('click', submitButton);
 function submitButton(event) {
   if (agentComp.length === 5) {
-    console.log(agentComp);
     var currentComp = {
-      comp: agentComp,
+      firstAgent: agentComp[0].src,
+      secondAgent: agentComp[1].src,
+      thirdAgent: agentComp[2].src,
+      fourthAgent: agentComp[3].src,
+      fifthAgent: agentComp[4].src,
       entryID: data.nextEntryId
     };
+    console.log(agentComp);
     data.nextEntryId++;
+    data.agentCompList.unshift(currentComp);
   }
   for (var i = 0; i < $selectContainers.length; i++) {
     $selectContainers[i].innerHTML = '';
   }
   agentComp.splice(0, 5);
-  $compScreen.className = 'comp-screen hidden';
-  $entriesScreen.className = 'entries-screen';
-}
-
-function renderComp(agentComp) {
-  var $entry = document.createElement('div');
-  var $divOne = document.createElement('div');
-  var $divTwo = document.createElement('div');
-  var $divThree = document.createElement('div');
-  var $divFour = document.createElement('div');
-  var $divFive = document.createElement('div');
-
-  $entry.setAttribute('class', 'entry');
-  $divOne.setAttribute('class', 'agent-one');
-  $divTwo.setAttribute('class', 'agent-two');
-  $divThree.setAttribute('class', 'agent-three');
-  $divFour.setAttribute('class', 'agent-four');
-  $divFive.setAttribute('class', 'agent-five');
-
-  $entry.appendChild($divOne);
-  $entry.appendChild($divTwo);
-  $entry.appendChild($divThree);
-  $entry.appendChild($divFour);
-  $entry.appendChild($divFive);
-  $entriesList.append($entry);
 }
