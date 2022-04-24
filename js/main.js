@@ -20,7 +20,6 @@ var $selectContainers = document.querySelectorAll('.select-container');
 var $compSelect = document.querySelector('.comp-select');
 var $submitButton = document.querySelector('.submit-button');
 var $entriesScreen = document.querySelector('.entries-screen');
-var $entriesList = document.querySelector('.entries-container');
 var $createCompTwo = document.querySelector('.create-comp');
 var agentComp = [];
 
@@ -37,7 +36,7 @@ function handleStart(event) {
   xhr.open('GET', 'https://valorant-api.com/v1/agents');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // AGENT LIST SCREEN
+    // agent list screen
     for (var i = 0; i < xhr.response.data.length; i++) {
       if (xhr.response.data[i].isPlayableCharacter === true) {
         var $li = document.createElement('li');
@@ -54,7 +53,7 @@ function handleStart(event) {
   xhr.send();
 }
 
-// view agent list button
+// view list of agents
 $agentsButton.addEventListener('click', agentsButton);
 $agentsBigButton.addEventListener('click', agentsButton);
 function agentsButton(event) {
@@ -99,7 +98,7 @@ function agentDetails(event) {
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
 
-      // AGENT DETAILS SCREEN
+      // agent details screen
       var id = event.target.id;
       if (data.detailsDisplay === false) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
@@ -133,6 +132,7 @@ function agentDetails(event) {
   }
 }
 
+// create comp button to show comp selection screen
 $createComp.addEventListener('click', createComp);
 $createCompTwo.addEventListener('click', createComp);
 function createComp(event) {
@@ -145,7 +145,7 @@ function createComp(event) {
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
-      // AGENT COMP LIST SCREEN
+      // agent comp list screen
       for (var i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
           var $li = document.createElement('li');
@@ -164,6 +164,7 @@ function createComp(event) {
   }
 }
 
+// add an agent to team comp selector
 $agentCompList.addEventListener('click', agentSelect);
 function agentSelect(event) {
   if (event.target.tagName === 'IMG') {
@@ -194,21 +195,15 @@ function agentSelect(event) {
       agentComp.push(event.target);
     }
   }
-  // console.log(agentComp);
 }
 
+// remove agent from team comp selector
 $compSelect.addEventListener('click', removeAgent);
 function removeAgent(event) {
   if (event.target.tagName === 'IMG') {
     for (var i = 0; i < $selectContainers.length; i++) {
       if (parseInt(event.target.parentNode.id) === i) {
-        console.log(parseInt(event.target.parentNode.id));
         if ($selectContainers[i].childElementCount !== 0) {
-          // console.log('reached');
-          // var $li = document.createElement('li');
-          // $li.setAttribute('class', 'agent-list-item');
-          // $li.appendChild(event.target);
-          // $agentCompList.appendChild($li);
           $selectContainers[i].removeChild(event.target);
           for (var j = 0; j < agentComp.length; j++) {
             if (event.target.id === agentComp[j].id) {
@@ -219,9 +214,9 @@ function removeAgent(event) {
       }
     }
   }
-  // console.log(agentComp);
 }
 
+// submit and save team comp
 $submitButton.addEventListener('click', submitButton);
 function submitButton(event) {
   if (agentComp.length === 5) {
@@ -233,7 +228,6 @@ function submitButton(event) {
       fifthAgent: agentComp[4].src,
       entryID: data.nextEntryId
     };
-    console.log(agentComp);
     data.nextEntryId++;
     data.agentCompList.unshift(currentComp);
   }
