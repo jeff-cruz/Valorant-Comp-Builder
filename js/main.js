@@ -21,6 +21,7 @@ var $compSelect = document.querySelector('.comp-select');
 var $submitButton = document.querySelector('.submit-button');
 var $entriesScreen = document.querySelector('.entries-screen');
 var $createCompTwo = document.querySelector('.create-comp');
+var $entriesList = document.querySelector('.entries-container');
 var agentComp = [];
 
 // get started button
@@ -230,9 +231,62 @@ function submitButton(event) {
     };
     data.nextEntryId++;
     data.agentCompList.unshift(currentComp);
+    $entriesList.prepend(renderComp(currentComp));
   }
+  // clear selector boxes
   for (var i = 0; i < $selectContainers.length; i++) {
     $selectContainers[i].innerHTML = '';
   }
+  // clear agentComp array
   agentComp.splice(0, 5);
+  $compScreen.className = 'comp-screen hidden';
+  $entriesScreen.className = 'entries-screen';
+}
+
+function renderComp(agentComp) {
+  var $entry = document.createElement('div');
+  var $divOne = document.createElement('div');
+  var $divTwo = document.createElement('div');
+  var $divThree = document.createElement('div');
+  var $divFour = document.createElement('div');
+  var $divFive = document.createElement('div');
+
+  $entry.setAttribute('class', 'entry');
+  $divOne.setAttribute('class', 'agent-one');
+  $divTwo.setAttribute('class', 'agent-two');
+  $divThree.setAttribute('class', 'agent-three');
+  $divFour.setAttribute('class', 'agent-four');
+  $divFive.setAttribute('class', 'agent-five');
+
+  var $firstAgentImg = document.createElement('img');
+  $firstAgentImg.setAttribute('class', 'agent-icon');
+  $firstAgentImg.setAttribute('src', data.agentCompList[0].firstAgent);
+  $divOne.appendChild($firstAgentImg);
+
+  var $secondAgentImg = document.createElement('img');
+  $secondAgentImg.setAttribute('class', 'agent-icon');
+  $secondAgentImg.setAttribute('src', data.agentCompList[0].secondAgent);
+  $divTwo.appendChild($secondAgentImg);
+
+  var $thirdAgentImg = document.createElement('img');
+  $thirdAgentImg.setAttribute('class', 'agent-icon');
+  $thirdAgentImg.setAttribute('src', data.agentCompList[0].thirdAgent);
+  $divThree.appendChild($thirdAgentImg);
+
+  var $fourthAgentImg = document.createElement('img');
+  $fourthAgentImg.setAttribute('class', 'agent-icon');
+  $fourthAgentImg.setAttribute('src', data.agentCompList[0].fourthAgent);
+  $divFour.appendChild($fourthAgentImg);
+
+  var $fifthAgentImg = document.createElement('img');
+  $fifthAgentImg.setAttribute('class', 'agent-icon');
+  $fifthAgentImg.setAttribute('src', data.agentCompList[0].fifthAgent);
+  $divFive.appendChild($fifthAgentImg);
+
+  $entry.appendChild($divOne);
+  $entry.appendChild($divTwo);
+  $entry.appendChild($divThree);
+  $entry.appendChild($divFour);
+  $entry.appendChild($divFive);
+  $entriesList.appendChild($entry);
 }

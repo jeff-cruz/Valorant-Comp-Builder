@@ -350,6 +350,10 @@ div.select-container > img {
   height: auto;
 }
 
+.entries-container {
+  width: 100%;
+}
+
 @media screen and (max-width: 390px) {
   div.agents-title {
     margin: auto;
