@@ -255,7 +255,7 @@ function renderEntry(entry) {
   var $divFour = document.createElement('div');
   var $divFive = document.createElement('div');
 
-  $entry.setAttribute('class', 'entry');
+  $entry.setAttribute('class', 'entry col-80');
   $divOne.setAttribute('class', 'agent-one');
   $divTwo.setAttribute('class', 'agent-two');
   $divThree.setAttribute('class', 'agent-three');
