@@ -377,6 +377,10 @@ div.select-container > img {
 }
 
 @media screen and (max-width: 390px) {
+  header {
+    width: 100%;
+  }
+
   div.agents-title {
     margin: auto;
   }

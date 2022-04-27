@@ -21,9 +21,8 @@ var $compSelect = document.querySelector('.comp-select');
 var $submitButton = document.querySelector('.submit-button');
 var $entriesScreen = document.querySelector('.entries-screen');
 var $createCompTwo = document.querySelector('.create-comp');
-var $entriesList = document.querySelector('.entries-container');
+var $entryList = document.querySelector('.entries-container');
 var $compsButton = document.querySelector('.comp-link');
-var $noEntries = document.querySelector('.no-entries');
 var $noEntriesContainer = document.querySelector('.no-entries-container');
 var agentComp = [];
 
@@ -224,17 +223,18 @@ function removeAgent(event) {
 $submitButton.addEventListener('click', submitButton);
 function submitButton(event) {
   if (agentComp.length === 5) {
-    var currentComp = {
+    var entry = {
       firstAgent: agentComp[0].src,
       secondAgent: agentComp[1].src,
       thirdAgent: agentComp[2].src,
       fourthAgent: agentComp[3].src,
       fifthAgent: agentComp[4].src,
       entryID: data.nextEntryId
+      // display: false
     };
     data.nextEntryId++;
-    data.agentCompList.unshift(currentComp);
-    $entriesList.prepend(renderComp(currentComp));
+    data.agentCompList.unshift(entry);
+    $entryList.prepend(renderEntry(entry));
   }
   // clear selector boxes
   for (var i = 0; i < $selectContainers.length; i++) {
@@ -244,9 +244,10 @@ function submitButton(event) {
   agentComp.splice(0, 5);
   $compScreen.className = 'comp-screen hidden';
   $entriesScreen.className = 'entries-screen';
+  noEntries();
 }
 
-function renderComp(agentComp) {
+function renderEntry(entry) {
   var $entry = document.createElement('div');
   var $divOne = document.createElement('div');
   var $divTwo = document.createElement('div');
@@ -263,27 +264,27 @@ function renderComp(agentComp) {
 
   var $firstAgentImg = document.createElement('img');
   $firstAgentImg.setAttribute('class', 'agent-icon');
-  $firstAgentImg.setAttribute('src', data.agentCompList[0].firstAgent);
+  $firstAgentImg.setAttribute('src', entry.firstAgent);
   $divOne.appendChild($firstAgentImg);
 
   var $secondAgentImg = document.createElement('img');
   $secondAgentImg.setAttribute('class', 'agent-icon');
-  $secondAgentImg.setAttribute('src', data.agentCompList[0].secondAgent);
+  $secondAgentImg.setAttribute('src', entry.secondAgent);
   $divTwo.appendChild($secondAgentImg);
 
   var $thirdAgentImg = document.createElement('img');
   $thirdAgentImg.setAttribute('class', 'agent-icon');
-  $thirdAgentImg.setAttribute('src', data.agentCompList[0].thirdAgent);
+  $thirdAgentImg.setAttribute('src', entry.thirdAgent);
   $divThree.appendChild($thirdAgentImg);
 
   var $fourthAgentImg = document.createElement('img');
   $fourthAgentImg.setAttribute('class', 'agent-icon');
-  $fourthAgentImg.setAttribute('src', data.agentCompList[0].fourthAgent);
+  $fourthAgentImg.setAttribute('src', entry.fourthAgent);
   $divFour.appendChild($fourthAgentImg);
 
   var $fifthAgentImg = document.createElement('img');
   $fifthAgentImg.setAttribute('class', 'agent-icon');
-  $fifthAgentImg.setAttribute('src', data.agentCompList[0].fifthAgent);
+  $fifthAgentImg.setAttribute('src', entry.fifthAgent);
   $divFive.appendChild($fifthAgentImg);
 
   $entry.appendChild($divOne);
@@ -293,6 +294,13 @@ function renderComp(agentComp) {
   $entry.appendChild($divFive);
 
   return $entry;
+}
+
+window.addEventListener('DOMContentLoaded', appendEntry);
+function appendEntry(entry) {
+  for (var i = 0; i < data.agentCompList.length; i++) {
+    $entryList.append(renderEntry(data.agentCompList[i]));
+  }
 }
 
 $compsButton.addEventListener('click', compsButton);
