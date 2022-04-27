@@ -137,14 +137,14 @@ button {
 
 .agent-icon-container {
   width: 100%;
-  height: 35em;
+  height: 42em;
   margin-top: -2em;
   margin-left: -2em;
 }
 
 .agent-icon {
-  width: 80px;
-  height: 80px;
+  max-width: 80px;
+  max-height: 80px;
   margin-left: 1.7em;
   margin-right: 1.7em;
 }
@@ -276,6 +276,10 @@ p.ability-description {
   text-align: center;
 }
 
+.create-container-two {
+  text-align: center;
+}
+
 .create-button {
   color: white;
   background-color: #fe4656;
@@ -350,12 +354,43 @@ div.select-container > img {
   height: auto;
 }
 
+.entries-container {
+  width: 100%;
+  height: 35em;
+  margin-top: -2em;
+  margin-bottom: 2em;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 4em;
+}
+
+.no-entries {
+  color: white;
+  margin: auto;
+}
+
+.no-entries-container {
+  width: 50em;
+  text-align: center;
+}
+
 @media screen and (max-width: 390px) {
+  header {
+    width: 100%;
+  }
+
   div.agents-title {
     margin: auto;
   }
 
   li.agent-list-item {
+    text-align: center;
     width: 100px;
     height: 100px;
   }
@@ -413,13 +448,14 @@ div.select-container > img {
   }
 
   .inline {
-    margin-top: 1em;
     margin-bottom: 1em;
     flex-wrap: wrap;
   }
 
   .agent-comp-list {
     margin-left: -2em;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .select-container {
@@ -437,5 +473,38 @@ div.select-container > img {
   .submit-button {
     margin-top: 0;
     width: 13em;
+  }
+
+  .agent-icon {
+    width: 100%;
+    height: auto;
+  }
+
+  .no-entries-container {
+    width: 25em;
+  }
+
+  .entry > div {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    margin: 0.5em;
+  }
+
+  .entry {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .entries-title {
+    margin-bottom: 2em;
+  }
+
+  .agent-icon-container {
+    height: 75%;
+  }
+
+  .comp-select {
+    margin-top: -5em;
   }
 }
