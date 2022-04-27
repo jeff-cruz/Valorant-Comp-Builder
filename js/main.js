@@ -22,6 +22,9 @@ var $submitButton = document.querySelector('.submit-button');
 var $entriesScreen = document.querySelector('.entries-screen');
 var $createCompTwo = document.querySelector('.create-comp');
 var $entriesList = document.querySelector('.entries-container');
+var $compsButton = document.querySelector('.comp-link');
+var $noEntries = document.querySelector('.no-entries');
+var $noEntriesContainer = document.querySelector('.no-entries-container');
 var agentComp = [];
 
 // get started button
@@ -288,5 +291,23 @@ function renderComp(agentComp) {
   $entry.appendChild($divThree);
   $entry.appendChild($divFour);
   $entry.appendChild($divFive);
-  $entriesList.appendChild($entry);
+
+  return $entry;
+}
+
+$compsButton.addEventListener('click', compsButton);
+function compsButton(event) {
+  $agentScreen.className = 'agents-screen hidden';
+  $detailsScreen.className = 'agent-details hidden';
+  $compScreen.className = 'comp-screen hidden';
+  $entriesScreen.className = 'entries-screen';
+  noEntries();
+}
+
+function noEntries(event) {
+  if (data.agentCompList.length !== 0) {
+    $noEntriesContainer.className = 'no-entries-container hidden';
+  } else {
+    $noEntriesContainer.className = 'no-entries-container';
+  }
 }
