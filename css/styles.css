@@ -2,8 +2,8 @@ header {
   position: fixed;
   background-color: black;
   color: white;
-  height: 5em;
   width: 100%;
+  height: 60px;
   z-index: 1;
 }
 
@@ -14,7 +14,7 @@ button,
 }
 
 .val-logo {
-  margin: 0.5em;
+  margin: 16px;
   text-align: center;
 }
 
@@ -37,7 +37,7 @@ button,
   text-align: center;
   margin: 1.5em 1em;
   color: #fe4656;
-  font-size: 1em;
+  font-size: 16px;
 }
 
 .color-bg {
@@ -69,9 +69,11 @@ button,
 }
 
 .main-container {
-  position: fixed;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  transform: translate(0, -65%);
   text-align: center;
-  margin-top: 10em;
 }
 
 .start-button {
@@ -122,10 +124,7 @@ button,
   position: relative;
   background-color: #fe4656;
   width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: 5em;
+  margin: auto;
 }
 
 .agents-text {
@@ -137,10 +136,8 @@ button,
 }
 
 .agent-icon-container {
-  width: 100%;
   height: 42em;
-  margin-top: -2em;
-  margin-left: -2em;
+  padding-right: 2em;
 }
 
 .agent-icon {
@@ -296,7 +293,6 @@ p.ability-description {
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
-  margin-left: -1em;
 }
 
 .select-container {
@@ -533,7 +529,6 @@ div.select-container > img {
   }
 
   .agent-comp-list {
-    margin-left: -2em;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -592,6 +587,7 @@ div.select-container > img {
 
   .agent-icon-container {
     height: 75%;
+    padding-left: 0.5em;
   }
 
   .comp-select {

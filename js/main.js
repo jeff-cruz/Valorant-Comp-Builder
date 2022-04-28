@@ -238,6 +238,8 @@ function submitButton(event) {
     data.nextEntryId++;
     data.agentCompList.push(entry);
     $entryList.prepend(renderEntry(entry));
+    $compScreen.className = 'comp-screen hidden';
+    $entriesScreen.className = 'entries-screen';
   }
   // clear selector boxes
   for (var i = 0; i < $selectContainers.length; i++) {
@@ -245,8 +247,6 @@ function submitButton(event) {
   }
   // clear agentComp array
   agentComp.splice(0, 5);
-  $compScreen.className = 'comp-screen hidden';
-  $entriesScreen.className = 'entries-screen';
   localStorage.setItem('ajax-local-storage', JSON.stringify(data));
   noEntries();
 }
