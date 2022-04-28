@@ -7,7 +7,6 @@ body {
 }
 
 .row {
-  width: 100%;
   display: flex;
 }
 
@@ -28,10 +27,6 @@ body {
 }
 
 @media screen and (max-width: 390px) {
-  body {
-    overflow: scroll;
-  }
-
   .col-half {
     max-width: 100%;
     margin: 0;
