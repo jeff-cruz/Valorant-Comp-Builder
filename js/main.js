@@ -24,10 +24,10 @@ var $createCompTwo = document.querySelector('.create-comp');
 var $entryList = document.querySelector('.entries-container');
 var $compsButton = document.querySelector('.comp-link');
 var $noEntriesContainer = document.querySelector('.no-entries-container');
-var $deleteButton = document.querySelector('.delete-button');
 var $cancelButton = document.querySelector('.cancel-button');
 var $confirmButton = document.querySelector('.confirm-button');
 var $deleteOverlay = document.querySelector('.delete-overlay');
+var currentEntryID;
 var agentComp = [];
 
 // get started button
@@ -234,10 +234,9 @@ function submitButton(event) {
       fourthAgent: agentComp[3].src,
       fifthAgent: agentComp[4].src,
       entryID: data.nextEntryId
-      // display: false
     };
     data.nextEntryId++;
-    data.agentCompList.unshift(entry);
+    data.agentCompList.push(entry);
     $entryList.prepend(renderEntry(entry));
   }
   // clear selector boxes
@@ -248,12 +247,14 @@ function submitButton(event) {
   agentComp.splice(0, 5);
   $compScreen.className = 'comp-screen hidden';
   $entriesScreen.className = 'entries-screen';
+  localStorage.setItem('ajax-local-storage', JSON.stringify(data));
   noEntries();
 }
 
+// render DOM tree for team comp entry
 function renderEntry(entry) {
   var $entry = document.createElement('div');
-  var $entryContainer = document.createElement('div');
+  var $entryContainer = document.createElement('li');
   var $divOne = document.createElement('div');
   var $divTwo = document.createElement('div');
   var $divThree = document.createElement('div');
@@ -262,6 +263,7 @@ function renderEntry(entry) {
 
   $entry.setAttribute('class', 'entry col-80');
   $entryContainer.setAttribute('class', 'entry-container');
+  $entryContainer.setAttribute('id', entry.entryID);
   $divOne.setAttribute('class', 'agent-one');
   $divTwo.setAttribute('class', 'agent-two');
   $divThree.setAttribute('class', 'agent-three');
@@ -295,6 +297,7 @@ function renderEntry(entry) {
 
   var $deleteButton = document.createElement('button');
   $deleteButton.setAttribute('class', 'delete-button col-20');
+  $deleteButton.setAttribute('id', entry.entryID);
   $deleteButton.textContent = 'Delete';
 
   $entry.appendChild($divOne);
@@ -308,13 +311,15 @@ function renderEntry(entry) {
   return $entryContainer;
 }
 
+// add entry to entries list
 window.addEventListener('DOMContentLoaded', appendEntry);
 function appendEntry(entry) {
   for (var i = 0; i < data.agentCompList.length; i++) {
-    $entryList.append(renderEntry(data.agentCompList[i]));
+    $entryList.prepend(renderEntry(data.agentCompList[i]));
   }
 }
 
+// view comp entries list
 $compsButton.addEventListener('click', compsButton);
 function compsButton(event) {
   $agentScreen.className = 'agents-screen hidden';
@@ -324,6 +329,7 @@ function compsButton(event) {
   noEntries();
 }
 
+// if no entries, display no entries
 function noEntries(event) {
   if (data.agentCompList.length !== 0) {
     $noEntriesContainer.className = 'no-entries-container hidden';
@@ -332,14 +338,36 @@ function noEntries(event) {
   }
 }
 
+// delete button: show modal
 window.addEventListener('click', deleteButton);
 function deleteButton(event) {
   if (event.target.className === 'delete-button col-20') {
     $deleteOverlay.className = 'delete-overlay';
+    currentEntryID = event.target.parentNode.id;
   }
 }
 
+// cancel button: hide modal
 $cancelButton.addEventListener('click', cancelButton);
 function cancelButton(event) {
+  $deleteOverlay.className = 'delete-overlay hidden';
+}
+
+// confirm button: deleting entry from entry list page and data.agentCompList
+$confirmButton.addEventListener('click', confirmButton);
+function confirmButton(event) {
+  var $entriesContainer = document.querySelector('.entries-container');
+  var $entryList = document.querySelectorAll('li');
+  for (var i = 0; i < data.agentCompList.length; i++) {
+    if (parseInt(currentEntryID) === data.agentCompList[i].entryID) {
+      data.agentCompList.splice(i, 1);
+      for (var j = 0; j < $entryList.length; j++) {
+        if ($entryList[j].id === currentEntryID) {
+          $entriesContainer.removeChild($entryList[j]);
+          localStorage.setItem('ajax-local-storage', JSON.stringify(data));
+        }
+      }
+    }
+  }
   $deleteOverlay.className = 'delete-overlay hidden';
 }
