@@ -24,6 +24,10 @@ var $createCompTwo = document.querySelector('.create-comp');
 var $entryList = document.querySelector('.entries-container');
 var $compsButton = document.querySelector('.comp-link');
 var $noEntriesContainer = document.querySelector('.no-entries-container');
+var $deleteButton = document.querySelector('.delete-button');
+var $cancelButton = document.querySelector('.cancel-button');
+var $confirmButton = document.querySelector('.confirm-button');
+var $deleteOverlay = document.querySelector('.delete-overlay');
 var agentComp = [];
 
 // get started button
@@ -249,6 +253,7 @@ function submitButton(event) {
 
 function renderEntry(entry) {
   var $entry = document.createElement('div');
+  var $entryContainer = document.createElement('div');
   var $divOne = document.createElement('div');
   var $divTwo = document.createElement('div');
   var $divThree = document.createElement('div');
@@ -256,6 +261,7 @@ function renderEntry(entry) {
   var $divFive = document.createElement('div');
 
   $entry.setAttribute('class', 'entry col-80');
+  $entryContainer.setAttribute('class', 'entry-container');
   $divOne.setAttribute('class', 'agent-one');
   $divTwo.setAttribute('class', 'agent-two');
   $divThree.setAttribute('class', 'agent-three');
@@ -287,13 +293,19 @@ function renderEntry(entry) {
   $fifthAgentImg.setAttribute('src', entry.fifthAgent);
   $divFive.appendChild($fifthAgentImg);
 
+  var $deleteButton = document.createElement('button');
+  $deleteButton.setAttribute('class', 'delete-button col-20');
+  $deleteButton.textContent = 'Delete';
+
   $entry.appendChild($divOne);
   $entry.appendChild($divTwo);
   $entry.appendChild($divThree);
   $entry.appendChild($divFour);
   $entry.appendChild($divFive);
+  $entryContainer.appendChild($entry);
+  $entryContainer.appendChild($deleteButton);
 
-  return $entry;
+  return $entryContainer;
 }
 
 window.addEventListener('DOMContentLoaded', appendEntry);
@@ -318,4 +330,16 @@ function noEntries(event) {
   } else {
     $noEntriesContainer.className = 'no-entries-container';
   }
+}
+
+window.addEventListener('click', deleteButton);
+function deleteButton(event) {
+  if (event.target.className === 'delete-button col-20') {
+    $deleteOverlay.className = 'delete-overlay';
+  }
+}
+
+$cancelButton.addEventListener('click', cancelButton);
+function cancelButton(event) {
+  $deleteOverlay.className = 'delete-overlay hidden';
 }

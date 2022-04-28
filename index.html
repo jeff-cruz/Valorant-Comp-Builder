@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header hidden">
+  <header class="header">
     <div class="container">
       <div class="row">
         <div class="column-full">
@@ -35,7 +35,7 @@
 
   <main>
     <!-- MAIN SCREEN -->
-    <div class="main-screen">
+    <div class="main-screen hidden">
       <div class="color-bg">
         <div class="row">
           <div class="main-container col-full">
@@ -226,7 +226,7 @@
     </div>
 
     <!-- AGENT LIST SCREEN -->
-    <div class="entries-screen hidden">
+    <div class="entries-screen">
       <div class="background">
         <div class="bw-bg">
           <div class="overlay">
@@ -256,6 +256,24 @@
         <div class="row">
           <div class="col-full create-container-two">
             <a class="create-comp tomorrow-font align-center">+Create Comp</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="delete-overlay hidden">
+        <div class="modal">
+          <div class="row">
+            <div class="column-full modal-text">
+              <p class="noto-font">Are you sure you would like to delete?</p>
+            </div>
+          </div>
+          <div class="row modal-buttons">
+            <div class="column-half">
+              <button class="cancel-button">Cancel</button>
+            </div>
+            <div class="column-half">
+              <button class="confirm-button">Confirm</button>
+            </div>
           </div>
         </div>
       </div>
