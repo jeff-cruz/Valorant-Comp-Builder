@@ -1,3 +1,4 @@
+/* header */
 header {
   position: fixed;
   background-color: black;
@@ -17,6 +18,15 @@ button,
   text-align: center;
 }
 
+.link-container {
+  width: 80px;
+  text-align: center;
+  margin: 1.5em 1em;
+  color: #fe4656;
+  font-size: 16px;
+}
+
+/* fonts */
 .val-font {
   font-family: VALORANT, sans-serif;
   color: white;
@@ -30,14 +40,7 @@ button,
   font-family: "Noto Sans", sans-serif;
 }
 
-.link-container {
-  width: 80px;
-  text-align: center;
-  margin: 1.5em 1em;
-  color: #fe4656;
-  font-size: 16px;
-}
-
+/* background image */
 .color-bg {
   min-width: 100%;
   min-height: 1024px;
@@ -59,28 +62,6 @@ button,
   background-size: cover;
   background-color: black;
   filter: contrast(105%);
-}
-
-.main-title {
-  font-size: 68px;
-}
-
-.main-container {
-  position: absolute;
-  margin: 0;
-  top: 50%;
-  transform: translate(0, -65%);
-  text-align: center;
-}
-
-.start-button {
-  background-color: #fe4656;
-  width: 10em;
-  height: 3em;
-  font-size: 24px;
-  border: white 1px solid;
-  padding: 1em;
-  margin-top: 1em;
 }
 
 .overlay {
@@ -105,6 +86,30 @@ button,
   z-index: -2;
 }
 
+/* main screen */
+.main-title {
+  font-size: 68px;
+}
+
+.main-container {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  transform: translate(0, -65%);
+  text-align: center;
+}
+
+.start-button {
+  background-color: #fe4656;
+  width: 10em;
+  height: 3em;
+  font-size: 24px;
+  border: white 1px solid;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+/* agent list screen */
 .agents-section {
   max-width: 50em;
   max-height: 100%;
@@ -149,6 +154,26 @@ button,
   list-style-type: none;
 }
 
+.details-display {
+  width: 100%;
+  display: flex;
+}
+
+.create-container {
+  text-align: center;
+}
+
+.create-button {
+  color: white;
+  background-color: #fe4656;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 3em;
+  font-size: 20px;
+  height: auto;
+}
+
+/* agent details screen */
 .title-container {
   position: relative;
   background-color: #fe4656;
@@ -261,29 +286,7 @@ p.ability-description {
   font-size: 32px;
 }
 
-.mobile-display {
-  width: 100%;
-  display: flex;
-}
-
-.create-container {
-  text-align: center;
-}
-
-.create-container-two {
-  text-align: center;
-}
-
-.create-button {
-  color: white;
-  background-color: #fe4656;
-  border: none;
-  border-radius: 5px;
-  padding: 0.3em 3em;
-  font-size: 20px;
-  height: auto;
-}
-
+/* agent comp selector screen */
 .agent-comp-list {
   margin-top: 6em;
   flex-wrap: wrap;
@@ -327,6 +330,7 @@ div.select-container > img {
   width: 20em;
 }
 
+/* comp entries list screen */
 .entries-title {
   position: relative;
   background-color: #fe4656;
@@ -345,6 +349,10 @@ div.select-container > img {
   padding: 0.3em 3em;
   font-size: 20px;
   height: auto;
+}
+
+.create-container-two {
+  text-align: center;
 }
 
 .entries-container {
@@ -453,20 +461,13 @@ div.select-container > img {
 }
 
 @media screen and (max-width: 390px) {
-  header {
-    width: 100%;
-  }
-
-  div.agents-title {
-    margin: auto;
-  }
-
+  /* agent list */
   li.agent-list-item {
-    text-align: center;
     width: 100px;
     height: 100px;
   }
 
+  /* agent details  */
   h1.agent-name {
     margin-top: 2em;
     font-size: 40px;
@@ -499,7 +500,6 @@ div.select-container > img {
 
   .details-container {
     width: 175%;
-    position: relative;
     margin-left: 1.5em;
   }
 
@@ -511,30 +511,22 @@ div.select-container > img {
     height: 250px;
   }
 
-  .mobile-display {
+  .details-display {
     display: inline-block;
   }
 
-  .create-container {
-    margin-top: 2em;
-  }
-
   .inline {
-    margin-bottom: 1em;
     flex-wrap: wrap;
+    margin-bottom: 1em;
   }
 
+  /* agent comp selector screen */
   .agent-comp-list {
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   .select-container {
-    background-color: rgb(255, 255, 255, 0.5);
-    width: 100px;
-    height: 100px;
-    border: 3px solid #fe4656;
-    border-radius: 10px;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-left: 0.75em;
@@ -546,11 +538,7 @@ div.select-container > img {
     width: 13em;
   }
 
-  .agent-icon {
-    width: 100%;
-    height: auto;
-  }
-
+  /* comp entry list screen */
   .no-entries-container {
     width: 25em;
   }
@@ -558,23 +546,19 @@ div.select-container > img {
   .entry > div {
     width: 80px;
     height: 80px;
-    text-align: center;
     margin: 0.5em;
+    text-align: center;
   }
 
   .entry {
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-right: 1em;
   }
 
   .entry-container {
-    margin-left: -2em;
-  }
-
-  .delete-button {
-    margin-left: 1em;
-    margin-top: 4em;
-    font-size: 18px;
+    margin-left: -1.5em;
+    padding-right: 1.5em;
   }
 
   .entries-title {
@@ -593,6 +577,12 @@ div.select-container > img {
   .modal {
     width: 80%;
     height: auto;
+  }
+
+  .delete-button {
+    margin-left: 1em;
+    margin-top: 4em;
+    font-size: 18px;
   }
 
   .confirm-button {
