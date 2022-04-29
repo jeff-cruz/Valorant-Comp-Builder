@@ -139,11 +139,12 @@ button,
 .agent-icon-container {
   height: 42em;
   padding-right: 2em;
+  margin: 10px 0;
 }
 
 .agent-icon {
-  max-width: 80px;
-  max-height: 80px;
+  width: 85px;
+  height: 85px;
   margin-left: 1.7em;
   margin-right: 1.7em;
 }
@@ -152,6 +153,11 @@ button,
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
+}
+
+.agent-list-item {
+  width: 130px;
+  height: 100px;
 }
 
 .details-display {
@@ -310,8 +316,8 @@ p.ability-description {
 }
 
 div.select-container > img {
-  margin-bottom: -4.5em;
-  margin-left: 0.5em;
+  margin-top: 0.3em;
+  margin-left: 0.3em;
 }
 
 .submit-container {
@@ -462,9 +468,13 @@ div.select-container > img {
 
 @media screen and (max-width: 390px) {
   /* agent list */
-  li.agent-list-item {
+  .agent-list-item {
     width: 100px;
-    height: 100px;
+  }
+
+  .agent-icon {
+    width: 80px;
+    height: 80px;
   }
 
   /* agent details  */
