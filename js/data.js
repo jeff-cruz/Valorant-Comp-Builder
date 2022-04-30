@@ -12,6 +12,7 @@ if (previousEntriesJSON !== null) {
   data = JSON.parse(previousEntriesJSON);
 }
 
+// store data and switch displays off
 window.addEventListener('beforeunload', beforeUnload);
 function beforeUnload() {
   data.listDisplay = false;
