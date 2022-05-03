@@ -1,47 +1,54 @@
+/* header */
 header {
   position: fixed;
   background-color: black;
   color: white;
-  height: 5em;
   width: 100%;
   z-index: 1;
 }
 
 a,
-button {
+button,
+.agent-icon {
   cursor: pointer;
 }
 
 .val-logo {
-  margin: 0.5em;
+  margin: 16px;
   text-align: center;
 }
 
+.link-container {
+  width: 80px;
+  text-align: center;
+  margin: 1.5em 1em;
+  color: #fe4656;
+  font-size: 16px;
+}
+
+/* fonts */
 .val-font {
-  font-family: VALORANT, sans-serif;
+  font-family: VALORANT, Tomorrow, "Noto Sans", sans-serif;
   color: white;
 }
 
 .tomorrow-font {
-  font-family: Tomorrow, sans-serif;
+  font-family: Tomorrow, "Noto Sans", sans-serif;
 }
 
 .noto-font {
   font-family: "Noto Sans", sans-serif;
 }
 
-.button-container {
-  width: 5em;
-  height: auto;
-  text-align: center;
-  margin: 1.5em 1em;
-  color: #fe4656;
-  font-size: 1em;
-}
-
+/* background image */
 .color-bg {
   min-width: 100%;
-  min-height: 1024px;
+  height: 1200px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-image: url("background-images/ajax-background.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -51,36 +58,20 @@ button {
 }
 
 .bw-bg {
-  min-width: 100%;
-  min-height: 1024px;
+  width: 100%;
+  height: 1024px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-image: url("background-images/ajax-background-bw.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: black;
-  filter: brightness(150%);
   filter: contrast(105%);
-}
-
-.main-title {
-  font-size: 68px;
-}
-
-.main-container {
-  position: fixed;
-  text-align: center;
-  margin-top: 10em;
-}
-
-.start-button {
-  background-color: #fe4656;
-  width: 10em;
-  height: 3em;
-  font-size: 24px;
-  border: white 1px solid;
-  padding: 1em;
-  margin-top: 1em;
 }
 
 .overlay {
@@ -94,7 +85,6 @@ button {
 
 .shadow {
   max-width: 50em;
-  max-height: 100%;
   margin: auto;
   background-color: black;
   opacity: 35%;
@@ -106,6 +96,30 @@ button {
   z-index: -2;
 }
 
+/* main screen */
+.main-title {
+  font-size: 68px;
+  width: auto;
+}
+
+.main-container {
+  position: absolute;
+  margin: 0;
+  transform: translate(0, 65%);
+  text-align: center;
+}
+
+.start-button {
+  background-color: #fe4656;
+  width: 10em;
+  height: 3em;
+  font-size: 24px;
+  border: white 1px solid;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+/* agent list screen */
 .agents-section {
   max-width: 50em;
   max-height: 100%;
@@ -121,10 +135,7 @@ button {
   position: relative;
   background-color: #fe4656;
   width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: 5em;
+  margin: auto;
 }
 
 .agents-text {
@@ -136,15 +147,15 @@ button {
 }
 
 .agent-icon-container {
-  width: 100%;
-  height: 42em;
-  margin-top: -2em;
-  margin-left: -2em;
+  height: 80%;
+  padding-right: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 .agent-icon {
-  max-width: 80px;
-  max-height: 80px;
+  width: 85px;
+  height: 85px;
   margin-left: 1.7em;
   margin-right: 1.7em;
 }
@@ -155,6 +166,32 @@ button {
   list-style-type: none;
 }
 
+.agent-list-item {
+  width: 100px;
+  height: 100px;
+  margin: 0.75em;
+}
+
+.details-display {
+  width: 100%;
+  display: flex;
+}
+
+.create-container {
+  text-align: center;
+}
+
+.create-button {
+  color: white;
+  background-color: #fe4656;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 3em;
+  font-size: 20px;
+  height: auto;
+}
+
+/* agent details screen */
 .title-container {
   position: relative;
   background-color: #fe4656;
@@ -197,7 +234,7 @@ button {
 img.agent-portrait {
   height: 600px;
   margin-top: -1em;
-  margin-left: -5em;
+  margin-left: -6em;
 }
 
 .portrait-container {
@@ -267,35 +304,12 @@ p.ability-description {
   font-size: 32px;
 }
 
-.mobile-display {
-  width: 100%;
-  display: flex;
-}
-
-.create-container {
-  text-align: center;
-}
-
-.create-container-two {
-  text-align: center;
-}
-
-.create-button {
-  color: white;
-  background-color: #fe4656;
-  border: none;
-  border-radius: 5px;
-  padding: 0.3em 3em;
-  font-size: 20px;
-  height: auto;
-}
-
+/* agent comp selector screen */
 .agent-comp-list {
   margin-top: 6em;
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
-  margin-left: -1em;
 }
 
 .select-container {
@@ -314,8 +328,8 @@ p.ability-description {
 }
 
 div.select-container > img {
-  margin-bottom: -4.5em;
-  margin-left: 0.5em;
+  margin-top: 0.3em;
+  margin-left: 0.3em;
 }
 
 .submit-container {
@@ -334,6 +348,7 @@ div.select-container > img {
   width: 20em;
 }
 
+/* comp entries list screen */
 .entries-title {
   position: relative;
   background-color: #fe4656;
@@ -352,6 +367,10 @@ div.select-container > img {
   padding: 0.3em 3em;
   font-size: 20px;
   height: auto;
+}
+
+.create-container-two {
+  text-align: center;
 }
 
 .entries-container {
@@ -459,21 +478,227 @@ div.select-container > img {
   margin-right: 1em;
 }
 
-@media screen and (max-width: 390px) {
-  header {
-    width: 100%;
+/* loading icon */
+.load-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.lds-ring {
+  max-width: 5em;
+  max-height: 5em;
+  margin: auto;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
   }
 
-  div.agents-title {
-    margin: auto;
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* error message */
+.error-container {
+  max-width: 25em;
+  max-height: 10em;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  position: absolute;
+  padding-top: 2em;
+  font-size: 18px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 391px) and (max-width: 768px) {
+  /* agent list screen */
+  .create-container {
+    margin-bottom: 3em;
   }
 
-  li.agent-list-item {
-    text-align: center;
+  .agent-list-item {
     width: 100px;
-    height: 100px;
+    margin: 0.5em 0.7035em;
   }
 
+  /* agent details screen */
+  h1.agent-name {
+    margin-top: 1.5em;
+    font-size: 60px;
+  }
+
+  h2.role-name {
+    font-size: 25px;
+  }
+
+  .agent-portrait {
+    max-height: 250px;
+    padding-left: 5em;
+  }
+
+  .ability {
+    width: 50px;
+  }
+
+  .details-background {
+    height: auto;
+  }
+
+  .details-container {
+    width: 135%;
+    margin-left: -2.2em;
+  }
+
+  .detail-header {
+    font-size: 16px;
+  }
+
+  .detail-text {
+    font-size: 10px;
+  }
+
+  .portrait-container {
+    height: 250px;
+  }
+
+  .details-display {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .inline {
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+  }
+
+  /* agent comp selector screen */
+  .agent-comp-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .comp-select {
+    margin-top: 0.2em;
+  }
+
+  .select-container {
+    margin-top: 0.2em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .submit-button {
+    margin-top: 0;
+    width: 13em;
+  }
+
+  /* comp entry list screen */
+  .entries-container {
+    margin-top: 0.2em;
+  }
+
+  .entry > div {
+    width: 80px;
+    height: 80px;
+    margin: 0.5em;
+    text-align: center;
+  }
+
+  .entry {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-right: 1em;
+  }
+
+  .entry-container {
+    margin-left: -1.5em;
+    padding-right: 1.5em;
+  }
+
+  .entries-title {
+    margin-bottom: 2em;
+  }
+
+  .agent-icon-container {
+    height: auto;
+    padding-left: 0.2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  /* main screen */
+  .main-title {
+    font-size: 55px;
+  }
+
+  .main-container {
+    transform: translate(0, 110%);
+  }
+
+  .start-button {
+    width: auto;
+    height: 2.5em;
+    font-size: 20px;
+    padding-bottom: 1.7em;
+  }
+
+  /* agent list screen */
+  .agent-list-item {
+    width: 80px;
+  }
+
+  .agent-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* agent details  */
   h1.agent-name {
     margin-top: 2em;
     font-size: 40px;
@@ -506,47 +731,40 @@ div.select-container > img {
 
   .details-container {
     width: 175%;
-    position: relative;
     margin-left: 1.5em;
   }
 
   .details-background {
-    height: 525px;
+    height: auto;
   }
 
   .portrait-container {
     height: 250px;
   }
 
-  .mobile-display {
+  .details-display {
     display: inline-block;
   }
 
-  .create-container {
-    margin-top: 2em;
-  }
-
   .inline {
-    margin-bottom: 1em;
     flex-wrap: wrap;
+    margin-bottom: 1em;
   }
 
+  /* agent comp selector screen */
   .agent-comp-list {
-    margin-left: -2em;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   .select-container {
-    background-color: rgb(255, 255, 255, 0.5);
-    width: 100px;
-    height: 100px;
-    border: 3px solid #fe4656;
-    border-radius: 10px;
-    margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-left: 0.75em;
     margin-right: 0.75em;
+  }
+
+  .submit-container {
+    margin-bottom: 2em;
   }
 
   .submit-button {
@@ -554,11 +772,7 @@ div.select-container > img {
     width: 13em;
   }
 
-  .agent-icon {
-    width: 100%;
-    height: auto;
-  }
-
+  /* comp entry list screen */
   .no-entries-container {
     width: 25em;
   }
@@ -566,23 +780,19 @@ div.select-container > img {
   .entry > div {
     width: 80px;
     height: 80px;
-    text-align: center;
     margin: 0.5em;
+    text-align: center;
   }
 
   .entry {
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-right: 1em;
   }
 
   .entry-container {
-    margin-left: -2em;
-  }
-
-  .delete-button {
-    margin-left: 1em;
-    margin-top: 4em;
-    font-size: 18px;
+    margin-left: -1.5em;
+    padding-right: 1.5em;
   }
 
   .entries-title {
@@ -590,7 +800,8 @@ div.select-container > img {
   }
 
   .agent-icon-container {
-    height: 75%;
+    padding-left: 0.5em;
+    margin-left: -1em;
   }
 
   .comp-select {
@@ -600,6 +811,12 @@ div.select-container > img {
   .modal {
     width: 80%;
     height: auto;
+  }
+
+  .delete-button {
+    margin-left: 1em;
+    margin-top: 4em;
+    font-size: 18px;
   }
 
   .confirm-button {

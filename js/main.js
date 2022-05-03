@@ -27,6 +27,8 @@ var $noEntriesContainer = document.querySelector('.no-entries-container');
 var $cancelButton = document.querySelector('.cancel-button');
 var $confirmButton = document.querySelector('.confirm-button');
 var $deleteOverlay = document.querySelector('.delete-overlay');
+var $loader = document.querySelector('.load-overlay');
+var $error = document.querySelector('.error-container');
 var currentEntryID;
 var agentComp = [];
 
@@ -43,6 +45,11 @@ function handleStart(event) {
   xhr.open('GET', 'https://valorant-api.com/v1/agents');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
+    if (xhr.status === 200) {
+      $loader.className = 'load-overlay hidden';
+    } else {
+      $error.className = 'error-container';
+    }
     // agent list screen
     for (var i = 0; i < xhr.response.data.length; i++) {
       if (xhr.response.data[i].isPlayableCharacter === true) {
@@ -54,6 +61,7 @@ function handleStart(event) {
         $icon.setAttribute('id', i);
         $li.appendChild($icon);
         $agentList.appendChild($li);
+
       }
     }
   });
@@ -74,7 +82,8 @@ function agentsButton(event) {
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
-      // AGENT LIST SCREEN
+
+      // agent list screen
       for (var i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
           var $li = document.createElement('li');
@@ -152,6 +161,7 @@ function createComp(event) {
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
+
       // agent comp list screen
       for (var i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
@@ -238,6 +248,8 @@ function submitButton(event) {
     data.nextEntryId++;
     data.agentCompList.push(entry);
     $entryList.prepend(renderEntry(entry));
+    $compScreen.className = 'comp-screen hidden';
+    $entriesScreen.className = 'entries-screen';
   }
   // clear selector boxes
   for (var i = 0; i < $selectContainers.length; i++) {
@@ -245,8 +257,6 @@ function submitButton(event) {
   }
   // clear agentComp array
   agentComp.splice(0, 5);
-  $compScreen.className = 'comp-screen hidden';
-  $entriesScreen.className = 'entries-screen';
   localStorage.setItem('ajax-local-storage', JSON.stringify(data));
   noEntries();
 }

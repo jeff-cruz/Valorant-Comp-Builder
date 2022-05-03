@@ -19,12 +19,12 @@
         <div class="column-full">
           <div class="row">
             <div>
-              <h2 class="val-font val-logo">Valorant <br>Comp</h2>
+              <h2 class="val-font val-logo">Valorant<br>Comp</h2>
             </div>
-            <div class="button-container">
+            <div class="link-container">
               <a class="agents-link tomorrow-font">Agents</a>
             </div>
-            <div class="button-container">
+            <div class="link-container">
               <a class="comp-link tomorrow-font">Comps</a>
             </div>
           </div>
@@ -34,7 +34,7 @@
   </header>
 
   <main>
-    <!-- MAIN SCREEN -->
+    <!-- main screen -->
     <div class="main-screen">
       <div class="color-bg">
         <div class="row">
@@ -45,8 +45,7 @@
         </div>
       </div>
     </div>
-
-    <!-- AGENT LIST SCREEN -->
+    <!-- agent list screen -->
     <div class="agents-screen hidden">
       <div class="background">
         <div class="bw-bg">
@@ -55,12 +54,23 @@
           <div class="shadow"></div>
         </div>
       </div>
-      <!-- agent list -->
+      <!-- list of agents -->
       <div class="agents-section">
         <div class="row">
           <div class="col-full">
             <div class="agents-title">
               <p class="agents-text tomorrow-font">Agents</p>
+            </div>
+            <div class="load-overlay">
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="error-container hidden">
+                <p class="error-message noto-font">An network error has occured. <br>Please check your network connection and try again.</p>
+              </div>
             </div>
             <ul class="row agent-icon-container agent-list">
             </ul>
@@ -75,7 +85,7 @@
       </div>
     </div>
 
-    <!-- AGENT DETAILS SCREEN -->
+    <!-- agent details screen -->
     <div class="agent-details hidden">
       <div class="background">
         <div class="bw-bg">
@@ -85,6 +95,7 @@
         </div>
       </div>
 
+      <!-- agent name and agent role -->
       <div class="details">
         <div class="row">
           <div class="col-full">
@@ -95,18 +106,15 @@
           </div>
         </div>
 
+        <!-- agent full portrait and agent abilities -->
         <div class="row">
           <div class="col-full">
-            <div class="mobile-display">
-
-              <!--left side of agent info-->
+            <div class="details-display">
               <div class="col-half">
                 <div class="portrait-container">
                   <img class="agent-portrait" src="">
                 </div>
               </div>
-
-              <!--right side of agent info-->
               <div class="col-half">
                 <div class="details-container">
                   <div class="details-background">
@@ -168,7 +176,6 @@
                           <p class="ability-description"></p>
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -176,6 +183,8 @@
             </div>
           </div>
         </div>
+
+        <!-- agent list -->
         <div class="row">
           <div class="col-full">
             <div class="agents-button">
@@ -186,7 +195,7 @@
       </div>
     </div>
 
-    <!-- COMP SELECTION SCREEN -->
+    <!-- comp selection screen -->
     <div class="comp-screen hidden">
       <div class="background">
         <div class="bw-bg">
@@ -195,6 +204,7 @@
           <div class="shadow"></div>
         </div>
       </div>
+
       <!-- agent list -->
       <div class="agents-section">
         <div class="row">
@@ -203,6 +213,8 @@
             </ul>
           </div>
         </div>
+
+        <!-- selected agent containers -->
         <div class="row">
           <div class="col-full inline comp-select">
             <div class="select-container" id="0">
@@ -217,6 +229,8 @@
             </div>
           </div>
         </div>
+
+        <!-- submit button -->
         <div class="row">
           <div class="col-full submit-container">
             <button class="submit-button">Submit</button>
@@ -225,7 +239,7 @@
       </div>
     </div>
 
-    <!-- AGENT LIST SCREEN -->
+    <!-- comp entry list screen -->
     <div class="entries-screen hidden">
       <div class="background">
         <div class="bw-bg">
@@ -234,6 +248,7 @@
           <div class="shadow"></div>
         </div>
       </div>
+
       <!-- agent list -->
       <div class="agents-section">
         <div class="row">
@@ -252,6 +267,7 @@
             </ul>
           </div>
         </div>
+
         <!-- create comp button -->
         <div class="row">
           <div class="col-full create-container-two">
@@ -260,6 +276,7 @@
         </div>
       </div>
 
+      <!-- delete button and modal -->
       <div class="delete-overlay hidden">
         <div class="modal">
           <div class="row">
@@ -278,7 +295,6 @@
         </div>
       </div>
     </div>
-
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
