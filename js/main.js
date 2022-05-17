@@ -1,36 +1,36 @@
-var $start = document.querySelector('.start-button');
-var $header = document.querySelector('header');
-var $agentScreen = document.querySelector('.agents-screen');
-var $mainScreen = document.querySelector('.main-screen');
-var $detailsScreen = document.querySelector('.agent-details');
-var $agentList = document.querySelector('.agent-list');
-var $agentCompList = document.querySelector('.agent-comp-list');
-var $agentsButton = document.querySelector('.agents-link');
-var $agentsBigButton = document.querySelector('.a-agent');
-var $abilityIcons = document.querySelectorAll('.ability-pics');
-var $abilityNames = document.querySelectorAll('.ability-name');
-var $abilityTexts = document.querySelectorAll('.ability-description');
-var $agentName = document.querySelector('.agent-name');
-var $roleName = document.querySelector('.role-name');
-var $agentPortrait = document.querySelector('.agent-portrait');
-var $detailText = document.querySelector('.detail-text');
-var $createComp = document.querySelector('.create-button');
-var $compScreen = document.querySelector('.comp-screen');
-var $selectContainers = document.querySelectorAll('.select-container');
-var $compSelect = document.querySelector('.comp-select');
-var $submitButton = document.querySelector('.submit-button');
-var $entriesScreen = document.querySelector('.entries-screen');
-var $createCompTwo = document.querySelector('.create-comp');
-var $entryList = document.querySelector('.entries-container');
-var $compsButton = document.querySelector('.comp-link');
-var $noEntriesContainer = document.querySelector('.no-entries-container');
-var $cancelButton = document.querySelector('.cancel-button');
-var $confirmButton = document.querySelector('.confirm-button');
-var $deleteOverlay = document.querySelector('.delete-overlay');
-var $loader = document.querySelector('.load-overlay');
-var $error = document.querySelector('.error-container');
-var currentEntryID;
-var agentComp = [];
+const $start = document.querySelector('.start-button');
+const $header = document.querySelector('header');
+const $agentScreen = document.querySelector('.agents-screen');
+const $mainScreen = document.querySelector('.main-screen');
+const $detailsScreen = document.querySelector('.agent-details');
+const $agentList = document.querySelector('.agent-list');
+const $agentCompList = document.querySelector('.agent-comp-list');
+const $agentsButton = document.querySelector('.agents-link');
+const $agentsBigButton = document.querySelector('.a-agent');
+const $abilityIcons = document.querySelectorAll('.ability-pics');
+const $abilityNames = document.querySelectorAll('.ability-name');
+const $abilityTexts = document.querySelectorAll('.ability-description');
+const $agentName = document.querySelector('.agent-name');
+const $roleName = document.querySelector('.role-name');
+const $agentPortrait = document.querySelector('.agent-portrait');
+const $detailText = document.querySelector('.detail-text');
+const $createComp = document.querySelector('.create-button');
+const $compScreen = document.querySelector('.comp-screen');
+const $selectContainers = document.querySelectorAll('.select-container');
+const $compSelect = document.querySelector('.comp-select');
+const $submitButton = document.querySelector('.submit-button');
+const $entriesScreen = document.querySelector('.entries-screen');
+const $createCompTwo = document.querySelector('.create-comp');
+const $entryList = document.querySelector('.entries-container');
+const $compsButton = document.querySelector('.comp-link');
+const $noEntriesContainer = document.querySelector('.no-entries-container');
+const $cancelButton = document.querySelector('.cancel-button');
+const $confirmButton = document.querySelector('.confirm-button');
+const $deleteOverlay = document.querySelector('.delete-overlay');
+const $loader = document.querySelector('.load-overlay');
+const $error = document.querySelector('.error-container');
+let currentEntryID;
+const agentComp = [];
 
 // get started button
 $start.addEventListener('click', handleStart);
@@ -41,7 +41,7 @@ function handleStart(event) {
   $detailsScreen.className = 'agent-details hidden';
   data.listDisplay = true;
 
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://valorant-api.com/v1/agents');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -51,11 +51,11 @@ function handleStart(event) {
       $error.className = 'error-container';
     }
     // agent list screen
-    for (var i = 0; i < xhr.response.data.length; i++) {
+    for (let i = 0; i < xhr.response.data.length; i++) {
       if (xhr.response.data[i].isPlayableCharacter === true) {
-        var $li = document.createElement('li');
+        const $li = document.createElement('li');
         $li.setAttribute('class', 'agent-list-item');
-        var $icon = document.createElement('img');
+        const $icon = document.createElement('img');
         $icon.setAttribute('class', 'agent-icon');
         $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
         $icon.setAttribute('id', i);
@@ -78,17 +78,17 @@ function agentsButton(event) {
   $entriesScreen.className = 'entries-screen hidden';
 
   if (data.listDisplay === false) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
 
       // agent list screen
-      for (var i = 0; i < xhr.response.data.length; i++) {
+      for (let i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
-          var $li = document.createElement('li');
+          const $li = document.createElement('li');
           $li.setAttribute('class', 'agent-list-item');
-          var $icon = document.createElement('img');
+          const $icon = document.createElement('img');
           $icon.setAttribute('class', 'agent-icon');
           $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
           $icon.setAttribute('id', i);
@@ -109,13 +109,13 @@ function agentDetails(event) {
     $agentScreen.className = 'agents-screen hidden';
     $detailsScreen.className = 'agent-details';
 
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
 
       // agent details screen
-      var id = event.target.id;
+      const id = event.target.id;
       if (data.detailsDisplay === false) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
           $agentName.textContent = xhr.response.data[id].displayName;
@@ -123,7 +123,7 @@ function agentDetails(event) {
           $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortraitV2);
           $detailText.textContent = xhr.response.data[id].description;
 
-          for (var j = 0; j < xhr.response.data[id].abilities.length; j++) {
+          for (let j = 0; j < xhr.response.data[id].abilities.length; j++) {
             $abilityIcons[j].setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
             $abilityNames[j].textContent = xhr.response.data[id].abilities[j].displayName;
             $abilityTexts[j].textContent = xhr.response.data[id].abilities[j].description;
@@ -136,7 +136,7 @@ function agentDetails(event) {
           $roleName.textContent = xhr.response.data[id].role.displayName;
           $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortraitV2);
           $detailText.textContent = xhr.response.data[id].description;
-          for (j = 0; j < xhr.response.data[id].abilities.length; j++) {
+          for (let j = 0; j < xhr.response.data[id].abilities.length; j++) {
             $abilityIcons[j].setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
             $abilityNames[j].textContent = xhr.response.data[id].abilities[j].displayName;
             $abilityTexts[j].textContent = xhr.response.data[id].abilities[j].description;
@@ -157,17 +157,17 @@ function createComp(event) {
   $entriesScreen.className = 'entries-screen hidden';
 
   if (data.compListDisplay === false) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://valorant-api.com/v1/agents');
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
 
       // agent comp list screen
-      for (var i = 0; i < xhr.response.data.length; i++) {
+      for (let i = 0; i < xhr.response.data.length; i++) {
         if (xhr.response.data[i].isPlayableCharacter === true) {
-          var $li = document.createElement('li');
+          const $li = document.createElement('li');
           $li.setAttribute('class', 'agent-list-item');
-          var $icon = document.createElement('img');
+          const $icon = document.createElement('img');
           $icon.setAttribute('class', 'agent-icon');
           $icon.setAttribute('src', xhr.response.data[i].displayIconSmall);
           $icon.setAttribute('id', i);
@@ -186,28 +186,28 @@ $agentCompList.addEventListener('click', agentSelect);
 function agentSelect(event) {
   if (event.target.tagName === 'IMG') {
     if ($selectContainers[0].childElementCount === 0) {
-      var firstIcon = event.target;
-      var firstIconCopy = firstIcon.cloneNode();
+      const firstIcon = event.target;
+      const firstIconCopy = firstIcon.cloneNode();
       $selectContainers[0].appendChild(firstIconCopy);
       agentComp.push(event.target);
     } else if ($selectContainers[1].childElementCount === 0) {
-      var secondIcon = event.target;
-      var secondIconCopy = secondIcon.cloneNode();
+      const secondIcon = event.target;
+      const secondIconCopy = secondIcon.cloneNode();
       $selectContainers[1].appendChild(secondIconCopy);
       agentComp.push(event.target);
     } else if ($selectContainers[2].childElementCount === 0) {
-      var thirdIcon = event.target;
-      var thirdIconCopy = thirdIcon.cloneNode();
+      const thirdIcon = event.target;
+      const thirdIconCopy = thirdIcon.cloneNode();
       $selectContainers[2].appendChild(thirdIconCopy);
       agentComp.push(event.target);
     } else if ($selectContainers[3].childElementCount === 0) {
-      var fourthIcon = event.target;
-      var fourthIconCopy = fourthIcon.cloneNode();
+      const fourthIcon = event.target;
+      const fourthIconCopy = fourthIcon.cloneNode();
       $selectContainers[3].appendChild(fourthIconCopy);
       agentComp.push(event.target);
     } else if ($selectContainers[4].childElementCount === 0) {
-      var fifthIcon = event.target;
-      var fifthIconCopy = fifthIcon.cloneNode();
+      const fifthIcon = event.target;
+      const fifthIconCopy = fifthIcon.cloneNode();
       $selectContainers[4].appendChild(fifthIconCopy);
       agentComp.push(event.target);
     }
@@ -218,11 +218,11 @@ function agentSelect(event) {
 $compSelect.addEventListener('click', removeAgent);
 function removeAgent(event) {
   if (event.target.tagName === 'IMG') {
-    for (var i = 0; i < $selectContainers.length; i++) {
+    for (let i = 0; i < $selectContainers.length; i++) {
       if (parseInt(event.target.parentNode.id) === i) {
         if ($selectContainers[i].childElementCount !== 0) {
           $selectContainers[i].removeChild(event.target);
-          for (var j = 0; j < agentComp.length; j++) {
+          for (let j = 0; j < agentComp.length; j++) {
             if (event.target.id === agentComp[j].id) {
               agentComp.splice(j, 1);
             }
@@ -237,7 +237,7 @@ function removeAgent(event) {
 $submitButton.addEventListener('click', submitButton);
 function submitButton(event) {
   if (agentComp.length === 5) {
-    var entry = {
+    const entry = {
       firstAgent: agentComp[0].src,
       secondAgent: agentComp[1].src,
       thirdAgent: agentComp[2].src,
@@ -252,7 +252,7 @@ function submitButton(event) {
     $entriesScreen.className = 'entries-screen';
   }
   // clear selector boxes
-  for (var i = 0; i < $selectContainers.length; i++) {
+  for (let i = 0; i < $selectContainers.length; i++) {
     $selectContainers[i].innerHTML = '';
   }
   // clear agentComp array
@@ -263,13 +263,13 @@ function submitButton(event) {
 
 // render DOM tree for team comp entry
 function renderEntry(entry) {
-  var $entry = document.createElement('div');
-  var $entryContainer = document.createElement('li');
-  var $divOne = document.createElement('div');
-  var $divTwo = document.createElement('div');
-  var $divThree = document.createElement('div');
-  var $divFour = document.createElement('div');
-  var $divFive = document.createElement('div');
+  const $entry = document.createElement('div');
+  const $entryContainer = document.createElement('li');
+  const $divOne = document.createElement('div');
+  const $divTwo = document.createElement('div');
+  const $divThree = document.createElement('div');
+  const $divFour = document.createElement('div');
+  const $divFive = document.createElement('div');
 
   $entry.setAttribute('class', 'entry col-80');
   $entryContainer.setAttribute('class', 'entry-container');
@@ -280,32 +280,32 @@ function renderEntry(entry) {
   $divFour.setAttribute('class', 'agent-four');
   $divFive.setAttribute('class', 'agent-five');
 
-  var $firstAgentImg = document.createElement('img');
+  const $firstAgentImg = document.createElement('img');
   $firstAgentImg.setAttribute('class', 'agent-icon');
   $firstAgentImg.setAttribute('src', entry.firstAgent);
   $divOne.appendChild($firstAgentImg);
 
-  var $secondAgentImg = document.createElement('img');
+  const $secondAgentImg = document.createElement('img');
   $secondAgentImg.setAttribute('class', 'agent-icon');
   $secondAgentImg.setAttribute('src', entry.secondAgent);
   $divTwo.appendChild($secondAgentImg);
 
-  var $thirdAgentImg = document.createElement('img');
+  const $thirdAgentImg = document.createElement('img');
   $thirdAgentImg.setAttribute('class', 'agent-icon');
   $thirdAgentImg.setAttribute('src', entry.thirdAgent);
   $divThree.appendChild($thirdAgentImg);
 
-  var $fourthAgentImg = document.createElement('img');
+  const $fourthAgentImg = document.createElement('img');
   $fourthAgentImg.setAttribute('class', 'agent-icon');
   $fourthAgentImg.setAttribute('src', entry.fourthAgent);
   $divFour.appendChild($fourthAgentImg);
 
-  var $fifthAgentImg = document.createElement('img');
+  const $fifthAgentImg = document.createElement('img');
   $fifthAgentImg.setAttribute('class', 'agent-icon');
   $fifthAgentImg.setAttribute('src', entry.fifthAgent);
   $divFive.appendChild($fifthAgentImg);
 
-  var $deleteButton = document.createElement('button');
+  const $deleteButton = document.createElement('button');
   $deleteButton.setAttribute('class', 'delete-button col-20');
   $deleteButton.setAttribute('id', entry.entryID);
   $deleteButton.textContent = 'Delete';
@@ -324,7 +324,7 @@ function renderEntry(entry) {
 // add entry to entries list
 window.addEventListener('DOMContentLoaded', appendEntry);
 function appendEntry(entry) {
-  for (var i = 0; i < data.agentCompList.length; i++) {
+  for (let i = 0; i < data.agentCompList.length; i++) {
     $entryList.prepend(renderEntry(data.agentCompList[i]));
   }
 }
@@ -366,12 +366,12 @@ function cancelButton(event) {
 // confirm button: deleting entry from entry list page and data.agentCompList
 $confirmButton.addEventListener('click', confirmButton);
 function confirmButton(event) {
-  var $entriesContainer = document.querySelector('.entries-container');
-  var $entryList = document.querySelectorAll('li');
-  for (var i = 0; i < data.agentCompList.length; i++) {
+  const $entriesContainer = document.querySelector('.entries-container');
+  const $entryList = document.querySelectorAll('li');
+  for (let i = 0; i < data.agentCompList.length; i++) {
     if (parseInt(currentEntryID) === data.agentCompList[i].entryID) {
       data.agentCompList.splice(i, 1);
-      for (var j = 0; j < $entryList.length; j++) {
+      for (let j = 0; j < $entryList.length; j++) {
         if ($entryList[j].id === currentEntryID) {
           $entriesContainer.removeChild($entryList[j]);
           localStorage.setItem('ajax-local-storage', JSON.stringify(data));
