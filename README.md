@@ -33,7 +33,7 @@ Try the application live at [https://jeff-cruz.github.io/valorant-comp-builder/]
 1. Clone the repository.
 
 ```shell
-    git clone [https://jeff-cruz.github.io/valorant-comp-builder/](https://jeff-cruz.github.io/valorant-comp-builder/)
+    git clone https://jeff-cruz.github.io/valorant-comp-builder/
 ```
 2. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 3. Valorant-API is being used for this project. Please refer to the API docs for more information on accessing the API.
