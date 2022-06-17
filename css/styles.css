@@ -54,7 +54,7 @@ button,
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: auto;
   background-color: black;
 }
 
@@ -85,7 +85,7 @@ button,
 }
 
 .shadow {
-  max-width: 50em;
+  max-width: 58em;
   margin: auto;
   background-color: black;
   opacity: 35%;
@@ -272,7 +272,7 @@ img.agent-portrait {
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 1em;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 300;
   padding-right: 0.5em;
 }
@@ -600,7 +600,7 @@ div.select-container > img {
   }
 
   .detail-text {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .portrait-container {
@@ -720,11 +720,11 @@ div.select-container > img {
   }
 
   .detail-text {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .ability-description {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .a-agent {
