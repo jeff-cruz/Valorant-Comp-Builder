@@ -19,8 +19,12 @@ Try the application live at https://jeff-cruz.github.io/valorant-comp-builder/
 * Media-queries
 
 ## Features Implemented
-* User can view a list of agents
-* User can click an agent and view their biography and abilities
-* User can create an agent composition entry
-* User can view their comp entry list
-* User can delete an agent composition entry
+* Users can view a list of agents
+* Users can click an agent and view their biography and abilities
+* Users can create an agent composition entry
+* Users can view their comp entry list
+* Users can delete an agent composition entry
+
+## Preview
+![Kapture 2022-06-17 at 10 26 36](https://user-images.githubusercontent.com/99565410/174349032-93f65c12-87dc-40ec-adfd-888e72798ae3.gif)
+![Kapture 2022-06-17 at 10 32 34](https://user-images.githubusercontent.com/99565410/174349320-9306501d-8373-4d34-955a-e9aa1de308fc.gif)
