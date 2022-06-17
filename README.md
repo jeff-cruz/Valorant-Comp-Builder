@@ -19,3 +19,4 @@ List of technologies used
 * Media-queries
 
 Features Implemented
+--------------------
