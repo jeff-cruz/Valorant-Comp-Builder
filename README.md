@@ -5,7 +5,7 @@ A dynamic HTML, CSS, and JavaScript solo project for Valorant gamers to build th
 As a Valorant player, I wanted to build my first project relating to Valorant that updates as new Valorant agents are released, look into agents background and to be able to make team comps.
 
 ## Live Demo
-Try the application live at https://jeff-cruz.github.io/valorant-comp-builder/
+Try the application live at [https://jeff-cruz.github.io/valorant-comp-builder/](https://jeff-cruz.github.io/valorant-comp-builder/)
 
 ## List of technologies used
 * HTML5
@@ -33,7 +33,8 @@ Try the application live at https://jeff-cruz.github.io/valorant-comp-builder/
 1. Clone the repository.
 
 ```shell
-    git clone https://github.com/Learning-Fuze/sgt-react
-    cd sgt-react
-    ```
-3. 
+    git clone [https://jeff-cruz.github.io/valorant-comp-builder/](https://jeff-cruz.github.io/valorant-comp-builder/)
+```
+2. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+3. Valorant-API is being used for this project. Please refer to the API docs for more information on accessing the API.
+Link to API: https://valorant-api.com/
