@@ -28,3 +28,12 @@ Try the application live at https://jeff-cruz.github.io/valorant-comp-builder/
 ## Preview
 ![Kapture 2022-06-17 at 10 26 36](https://user-images.githubusercontent.com/99565410/174349032-93f65c12-87dc-40ec-adfd-888e72798ae3.gif)
 ![Kapture 2022-06-17 at 10 32 34](https://user-images.githubusercontent.com/99565410/174349320-9306501d-8373-4d34-955a-e9aa1de308fc.gif)
+
+### Getting Started
+1. Clone the repository.
+
+```shell
+    git clone https://github.com/Learning-Fuze/sgt-react
+    cd sgt-react
+    ```
+3. 
