@@ -250,7 +250,7 @@ img.agent-portrait {
 }
 
 .details-background {
-  height: 575px;
+  height: auto;
   background-color: #333;
   border: 1px solid white;
   border-radius: 2%;
