@@ -6,7 +6,7 @@ As a Valorant player, I wanted to build my first project relating to Valorant th
 
 Live Deployment: https://jeff-cruz.github.io/valorant-comp-builder/
 
-List of technologies used
+## List of technologies used
 -------------------------
 * HTML5
 * CSS3
