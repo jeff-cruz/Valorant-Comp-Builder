@@ -8,22 +8,14 @@ Live Deployment: https://jeff-cruz.github.io/valorant-comp-builder/
 
 List of technologies used
 -------------------------
-⋅⋅* HTML5
-
-⋅⋅* CSS3
-
-⋅⋅* JavaScript
-
-⋅⋅* JSON
-
-⋅⋅* Flexbox
-
-⋅⋅* API
-
-⋅⋅* AJAX
-
-⋅⋅* Figma
-
-⋅⋅* Media-queries
+* HTML5
+* CSS3
+* JavaScript
+* JSON
+* Flexbox
+* API
+* AJAX
+* Figma
+* Media-queries
 
 Features Implemented
