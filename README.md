@@ -20,3 +20,8 @@ List of technologies used
 
 Features Implemented
 --------------------
+* User can view a list of agents
+* User can click an agent and view their biography and abilities
+* User can create an agent composition entry
+* User can view their comp entry list
+* User can delete an agent composition entry
