@@ -120,7 +120,7 @@ function agentDetails(event) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
           $agentName.textContent = xhr.response.data[id].displayName;
           $roleName.textContent = xhr.response.data[id].role.displayName;
-          $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortraitV2);
+          $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortrait);
           $detailText.textContent = xhr.response.data[id].description;
 
           for (let j = 0; j < xhr.response.data[id].abilities.length; j++) {
@@ -134,7 +134,7 @@ function agentDetails(event) {
         if (xhr.response.data[id].isPlayableCharacter === true) {
           $agentName.textContent = xhr.response.data[id].displayName;
           $roleName.textContent = xhr.response.data[id].role.displayName;
-          $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortraitV2);
+          $agentPortrait.setAttribute('src', xhr.response.data[id].fullPortrait);
           $detailText.textContent = xhr.response.data[id].description;
           for (let j = 0; j < xhr.response.data[id].abilities.length; j++) {
             $abilityIcons[j].setAttribute('src', xhr.response.data[id].abilities[j].displayIcon);
